@@ -1,0 +1,972 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <script src="./config-loader.js" defer></script>
+  <title>Precios Diseño Web · NDR Marketing | Chile y Argentina</title>
+  <meta name="description" content="Precios de diseño web en Chile. Landing page desde $150.000 CLP, tienda online desde $700.000 CLP. Shopify, WordPress, Tiendanube. Cotización gratis.">
+  <meta property="og:title" content="Precios Diseño Web · NDR Marketing | Chile">
+  <meta property="og:description" content="Precios claros de diseño web en Chile. Landing page desde $150.000 CLP, sitio completo desde $450.000 CLP, ecommerce desde $700.000 CLP.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ndrmarketing.cl/og-image.png">
+  <link rel="canonical" href="https://ndrmarketing.cl/precios-web.html">
+  <link rel="alternate" hreflang="es-CL" href="https://ndrmarketing.cl/precios-web.html">
+  <link rel="alternate" hreflang="es-AR" href="https://ndrmarketing.cl/precios-web.html">
+  <link rel="alternate" hreflang="es" href="https://ndrmarketing.cl/precios-web.html">
+  <link rel="alternate" hreflang="x-default" href="https://ndrmarketing.cl/">
+  <meta property="og:url" content="https://ndrmarketing.cl/precios-web.html">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:locale:alternate" content="es_AR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Precios Diseño Web · NDR Marketing | Chile y Argentina">
+  <meta name="twitter:description" content="Precios claros de diseño web para Chile y Argentina. Landing page desde $150.000 CLP. Shopify, WordPress, Tiendanube. Cotización gratis.">
+  <meta name="twitter:image" content="https://ndrmarketing.cl/og-image.png">
+  <meta name="theme-color" content="#080810">
+  <meta name="author" content="Nicolas Egana - NDR Marketing">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Diseño Web · NDR Marketing",
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "NDR Marketing SpA",
+      "url": "https://ndrmarketing.cl"
+    },
+    "areaServed": [
+      { "@type": "Country", "name": "Chile" },
+      { "@type": "Country", "name": "Argentina" }
+    ],
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Landing Page",
+        "description": "Landing page de alta conversión, 1 página, diseño moderno y responsive",
+        "priceCurrency": "CLP",
+        "price": "150000",
+        "eligibleRegion": { "@type": "Country", "name": "Chile" }
+      },
+      {
+        "@type": "Offer",
+        "name": "Sitio Web",
+        "description": "Sitio web multi-sección con hasta 6 secciones, blog, formulario",
+        "priceCurrency": "CLP",
+        "price": "450000",
+        "eligibleRegion": { "@type": "Country", "name": "Chile" }
+      },
+      {
+        "@type": "Offer",
+        "name": "Tienda Online",
+        "description": "Ecommerce completo en Shopify, Tiendanube o WooCommerce",
+        "priceCurrency": "CLP",
+        "price": "700000",
+        "eligibleRegion": { "@type": "Country", "name": "Chile" }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #080810;
+      --surface: #111118;
+      --surface2: #18181f;
+      --border: #232330;
+      --text: #f0f0fa;
+      --text-muted: #8b8ba8;
+      --primary: #6c63ff;
+      --primary-light: #8b84ff;
+      --secondary: #00e5a0;
+      --accent: #ff9f43;
+      --danger: #ff6b7a;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --radius-sm: 7px;
+      --shadow-card: 0 20px 50px rgba(0,0,0,0.45);
+      --shadow-glow: 0 0 40px rgba(108,99,255,0.18);
+      --container: min(1180px, calc(100% - 40px));
+      --transition: 200ms ease;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    ::-webkit-scrollbar { width:6px; } ::-webkit-scrollbar-track { background:var(--bg); } ::-webkit-scrollbar-thumb { background:rgba(108,99,255,.4); border-radius:3px; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-feature-settings: "cv02","cv03","cv04","cv11";
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(108,99,255,0.22), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(0,229,160,0.07), transparent),
+        radial-gradient(ellipse 50% 50% at 0% 50%, rgba(108,99,255,0.05), transparent);
+      pointer-events: none; z-index: -1;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── SCROLL PROGRESS ─── */
+    .scroll-progress { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,var(--primary),var(--secondary)); z-index:1001; width:0; transition:width 80ms linear; }
+
+    /* ─── HEADER ─── */
+    .site-header { position: fixed; top:0; left:0; right:0; z-index:999; border-bottom:1px solid transparent; transition: background 260ms ease, border-color 260ms ease; }
+    .site-header.scrolled { background:rgba(8,8,16,0.88); backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%); border-color:rgba(255,255,255,0.06); }
+    .nav { display:flex; align-items:center; justify-content:space-between; height:66px; width:var(--container); margin:0 auto; }
+    .nav-brand { font-weight:900; font-size:1.1rem; letter-spacing:-0.03em; }
+    .nav-brand span { background:linear-gradient(135deg,var(--primary),var(--primary-light)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .nav-links { display:flex; align-items:center; gap:16px; list-style:none; margin:0; padding:0; }
+    .nav-links a { font-size:0.82rem; font-weight:500; color:var(--text-muted); transition:color var(--transition); }
+    .nav-links a:hover, .nav-links a.active { color:var(--text); }
+    .nav-cta { display:none; }
+    @media(min-width:1100px){
+      .nav-cta { display:inline-flex; align-items:center; padding:9px 22px; border-radius:var(--radius-md); background:linear-gradient(135deg,#6c63ff,#8b84ff); color:#fff; font-weight:700; font-size:0.87rem; box-shadow:0 2px 16px rgba(108,99,255,.4); transition:transform 180ms ease, box-shadow 180ms ease; }
+      .nav-cta:hover { transform:translateY(-1px); box-shadow:0 4px 24px rgba(108,99,255,.55); }
+    }
+    .menu-toggle { display:none; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,0.1); color:var(--text); padding:8px 10px; border-radius:var(--radius-sm); cursor:pointer; }
+    @media(max-width:767px){
+      .menu-toggle { display:flex; align-items:center; }
+      .nav-links { display:none; position:fixed; inset:66px 0 0; background:rgba(8,8,16,0.98); backdrop-filter:blur(24px); flex-direction:column; align-items:flex-start; padding:28px 24px; gap:22px; z-index:998; border-top:1px solid rgba(255,255,255,.06); }
+      .nav-links.open { display:flex; }
+      .nav-links a { font-size:1.08rem; }
+    }
+
+    /* ─── LAYOUT ─── */
+    .container { width:var(--container); margin:0 auto; }
+    .section { padding:100px 0; }
+    .section-dark { background:rgba(0,0,0,0.22); border-top:1px solid rgba(255,255,255,.04); border-bottom:1px solid rgba(255,255,255,.04); }
+    .section-violet { background:linear-gradient(180deg,rgba(108,99,255,.06) 0%,rgba(108,99,255,.02) 100%); border-top:1px solid rgba(108,99,255,.08); }
+    .section-emerald { background:linear-gradient(180deg,rgba(0,229,160,.05) 0%,rgba(0,229,160,.01) 100%); border-top:1px solid rgba(0,229,160,.07); }
+
+    /* ─── REVEAL ─── */
+    .reveal { opacity:0; transform:translateY(26px); transition:opacity 520ms cubic-bezier(.2,.8,.2,1), transform 520ms cubic-bezier(.2,.8,.2,1); }
+    .reveal.is-visible { opacity:1; transform:none; }
+    .reveal-scale { opacity:0; transform:scale(0.96); transition:opacity 480ms cubic-bezier(.2,.8,.2,1), transform 480ms cubic-bezier(.2,.8,.2,1); }
+    .reveal-scale.is-visible { opacity:1; transform:none; }
+    .reveal-left { opacity:0; transform:translateX(-24px); transition:opacity 500ms cubic-bezier(.2,.8,.2,1), transform 500ms cubic-bezier(.2,.8,.2,1); }
+    .reveal-left.is-visible { opacity:1; transform:none; }
+    .reveal-right { opacity:0; transform:translateX(24px); transition:opacity 500ms cubic-bezier(.2,.8,.2,1), transform 500ms cubic-bezier(.2,.8,.2,1); }
+    .reveal-right.is-visible { opacity:1; transform:none; }
+
+    /* ─── TYPE ─── */
+    h1,h2,h3 { margin:0; line-height:1.14; letter-spacing:-0.03em; }
+    h1 { font-size:clamp(2.4rem,6vw,3.8rem); font-weight:900; }
+    h2 { font-size:clamp(1.8rem,4vw,2.7rem); font-weight:800; }
+    h3 { font-size:1.08rem; font-weight:700; letter-spacing:-.01em; }
+    p { margin:0; }
+    .section-header { display:grid; gap:14px; max-width:640px; margin-bottom:56px; }
+    .section-header.centered { text-align:center; margin-left:auto; margin-right:auto; }
+    .kicker { display:inline-flex; align-items:center; gap:8px; font-size:0.72rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--secondary); }
+    .kicker-dot { width:5px; height:5px; border-radius:50%; background:var(--secondary); box-shadow:0 0 8px var(--secondary); }
+    .section-copy { color:var(--text-muted); font-size:1.02rem; line-height:1.7; }
+    .lead { font-size:1.08rem; color:var(--text-muted); line-height:1.74; }
+    .gradient-text { background:linear-gradient(135deg,var(--primary),var(--primary-light),var(--secondary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+    /* ─── BUTTONS ─── */
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 28px; border-radius:var(--radius-md); font-weight:700; font-size:0.95rem; cursor:pointer; border:none; text-decoration:none; transition:transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease; font-family:inherit; letter-spacing:-.01em; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-primary { background:linear-gradient(135deg,#6c63ff,#8b84ff); color:#fff; box-shadow:0 4px 24px rgba(108,99,255,.45), 0 1px 0 rgba(255,255,255,.12) inset; }
+    .btn-primary:hover { box-shadow:0 8px 32px rgba(108,99,255,.55), 0 1px 0 rgba(255,255,255,.12) inset; }
+    .btn-secondary { background:rgba(255,255,255,.05); color:var(--text); border:1px solid rgba(255,255,255,.12); backdrop-filter:blur(8px); }
+    .btn-secondary:hover { background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.24); }
+    .btn-green { background:linear-gradient(135deg,#25D366,#1db954); color:#fff; box-shadow:0 4px 24px rgba(37,211,102,.35); }
+    .btn-green:hover { box-shadow:0 8px 32px rgba(37,211,102,.5); }
+    .btn-full { width:100%; }
+    .btn-lg { padding:17px 38px; font-size:1.02rem; }
+
+    /* ─── CARD ─── */
+    .card { background:var(--surface); border:1px solid rgba(255,255,255,.07); border-radius:var(--radius-lg); box-shadow:var(--shadow-card); padding:28px; }
+
+    /* ─── HERO ─── */
+    .hero { padding:136px 0 96px; position:relative; overflow:hidden; text-align:center; }
+    .hero::after { content:""; position:absolute; top:0; left:50%; transform:translateX(-50%); width:800px; height:800px; background:radial-gradient(circle, rgba(108,99,255,.12) 0%, transparent 70%); pointer-events:none; z-index:0; }
+    .hero-content { position:relative; z-index:1; display:grid; gap:26px; justify-items:center; }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:9px;
+      font-size:0.73rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+      color:var(--secondary);
+      padding:6px 16px; border-radius:999px;
+      background:rgba(0,229,160,.08); border:1px solid rgba(0,229,160,.22);
+    }
+    .hero-badge-dot { width:6px; height:6px; border-radius:50%; background:var(--secondary); box-shadow:0 0 10px var(--secondary); animation:pdot 2.4s ease-in-out infinite; }
+    @keyframes pdot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.6)} }
+    .hero-lead { max-width:580px; font-size:1.1rem; color:var(--text-muted); line-height:1.74; }
+    .urgency-bar {
+      display:inline-flex; align-items:center; gap:10px;
+      padding:11px 22px; border-radius:var(--radius-md);
+      background:rgba(255,159,67,.08); border:1px solid rgba(255,159,67,.2);
+      font-size:0.82rem; color:var(--accent); font-weight:600;
+      max-width:640px; text-align:left;
+    }
+    .urgency-bar svg { flex:none; }
+
+    /* ─── PRICING CARDS ─── */
+    .pricing-section { padding:90px 0 60px; }
+    .pricing-grid {
+      display:grid; gap:22px; grid-template-columns:1fr;
+    }
+    @media(min-width:768px){ .pricing-grid { grid-template-columns:repeat(3,1fr); } }
+    .pricing-card {
+      padding:32px 28px 28px;
+      border-radius:var(--radius-lg);
+      border:1px solid rgba(255,255,255,.07);
+      background:linear-gradient(160deg,var(--surface) 0%, rgba(255,255,255,.01) 100%);
+      display:flex; flex-direction:column; gap:0;
+      transition:border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+      position:relative; overflow:hidden;
+    }
+    .pricing-card:hover { transform:translateY(-4px); box-shadow:0 24px 50px rgba(0,0,0,.4); }
+    .pricing-card.featured {
+      border-color:rgba(108,99,255,.4);
+      background:linear-gradient(160deg,rgba(108,99,255,.08) 0%,var(--surface) 60%);
+      box-shadow:0 20px 50px rgba(108,99,255,.15), var(--shadow-card);
+    }
+    .pricing-card.featured:hover { border-color:rgba(108,99,255,.65); box-shadow:0 28px 60px rgba(108,99,255,.25), var(--shadow-card); }
+    .pricing-card-top-border {
+      position:absolute; top:0; left:0; right:0; height:3px;
+    }
+    .pricing-card-top-border.purple { background:linear-gradient(90deg,var(--primary),var(--primary-light),var(--secondary)); }
+    .pricing-card-top-border.grey { background:rgba(255,255,255,.08); }
+    .featured-badge {
+      display:inline-flex; align-items:center; gap:6px;
+      padding:4px 12px; border-radius:999px;
+      font-size:0.68rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+      background:linear-gradient(135deg,rgba(108,99,255,.25),rgba(139,132,255,.25));
+      border:1px solid rgba(108,99,255,.4);
+      color:var(--primary-light);
+      margin-bottom:18px; align-self:flex-start;
+    }
+    .pricing-plan-name { font-size:0.75rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; }
+    .pricing-price { font-size:clamp(1.8rem,4vw,2.2rem); font-weight:900; letter-spacing:-.04em; color:var(--text); margin-bottom:4px; }
+    .pricing-price-note { font-size:0.78rem; color:var(--text-muted); margin-bottom:24px; }
+    .pricing-divider { height:1px; background:rgba(255,255,255,.06); margin:20px 0; }
+    .pricing-features { list-style:none; margin:0; padding:0; display:grid; gap:10px; flex:1; }
+    .pricing-features li { display:flex; align-items:flex-start; gap:10px; font-size:0.87rem; color:var(--text-muted); line-height:1.5; }
+    .pricing-features li .check { color:var(--secondary); flex:none; margin-top:1px; }
+    .pricing-cta { margin-top:28px; }
+    .pricing-note { text-align:center; color:var(--text-muted); font-size:0.82rem; margin-top:24px; }
+
+    /* ─── COMPARISON TABLE ─── */
+    .table-section { padding:80px 0; }
+    .table-wrapper { overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:var(--radius-lg); border:1px solid rgba(255,255,255,.07); }
+    .compare-table { width:100%; border-collapse:collapse; min-width:640px; }
+    .compare-table th, .compare-table td { padding:14px 18px; text-align:left; font-size:0.87rem; border-bottom:1px solid rgba(255,255,255,.05); }
+    .compare-table th { font-weight:800; font-size:0.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-muted); background:var(--surface2); }
+    .compare-table th:first-child { border-radius:var(--radius-lg) 0 0 0; }
+    .compare-table th:last-child { border-radius:0 var(--radius-lg) 0 0; }
+    .compare-table th.featured-col { color:var(--primary-light); background:rgba(108,99,255,.08); }
+    .compare-table td { background:var(--surface); color:var(--text-muted); }
+    .compare-table td.featured-col { background:rgba(108,99,255,.04); }
+    .compare-table tr:last-child td { border-bottom:none; }
+    .compare-table tr:last-child td:first-child { border-radius:0 0 0 var(--radius-lg); }
+    .compare-table tr:last-child td:last-child { border-radius:0 0 var(--radius-lg) 0; }
+    .compare-table td:first-child { font-weight:600; color:var(--text); }
+    .compare-table tr:hover td { background:rgba(255,255,255,.02); }
+    .compare-table tr:hover td.featured-col { background:rgba(108,99,255,.07); }
+    .check-icon { color:var(--secondary); font-weight:800; }
+    .dash-icon { color:rgba(255,255,255,.18); }
+
+    /* ─── MÉTODOS DE PAGO ─── */
+    .payment-section { padding:80px 0; }
+    .payment-badges { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:40px; }
+    .payment-badge {
+      display:flex; align-items:center; gap:12px;
+      padding:16px 24px; border-radius:var(--radius-lg);
+      border:1px solid rgba(255,255,255,.08);
+      background:var(--surface);
+      font-weight:700; font-size:0.92rem;
+      transition:transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+    }
+    .payment-badge:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,.3); }
+    .payment-badge-icon { width:40px; height:40px; border-radius:10px; display:grid; place-items:center; flex:none; }
+    .payment-note { text-align:center; font-size:0.82rem; color:var(--text-muted); margin-top:20px; }
+
+    /* ─── FAQ ─── */
+    .faq-section { padding:80px 0; }
+    .faq-list { display:grid; gap:10px; max-width:760px; margin:0 auto; }
+    .faq-item {
+      border-radius:var(--radius-lg);
+      border:1px solid rgba(255,255,255,.07);
+      background:var(--surface);
+      overflow:hidden;
+      transition:border-color 200ms ease;
+    }
+    .faq-item.open { border-color:rgba(108,99,255,.3); }
+    .faq-q {
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      padding:20px 24px;
+      cursor:pointer;
+      font-weight:700; font-size:0.97rem;
+      color:var(--text);
+      background:none; border:none; width:100%;
+      text-align:left; font-family:inherit;
+      letter-spacing:-.01em;
+      transition:color 200ms ease;
+    }
+    .faq-q:hover { color:var(--primary-light); }
+    .faq-toggle {
+      width:26px; height:26px; border-radius:7px; flex:none;
+      display:grid; place-items:center;
+      background:rgba(108,99,255,.12); border:1px solid rgba(108,99,255,.2);
+      color:var(--primary-light); font-size:1.1rem; font-weight:700;
+      transition:transform 200ms ease, background 200ms ease;
+      line-height:1;
+    }
+    .faq-item.open .faq-toggle { background:rgba(108,99,255,.22); transform:rotate(45deg); }
+    .faq-a {
+      max-height:0; overflow:hidden;
+      transition:max-height 320ms cubic-bezier(.2,.8,.2,1), padding 320ms ease;
+      padding:0 24px;
+    }
+    .faq-item.open .faq-a { max-height:400px; padding:0 24px 20px; }
+    .faq-a p { font-size:0.91rem; color:var(--text-muted); line-height:1.7; }
+
+    /* ─── COMBO SECTION ─── */
+    .combo-section { padding:80px 0; }
+    .combo-card {
+      padding:44px 40px;
+      border-radius:var(--radius-lg);
+      border:1px solid rgba(108,99,255,.3);
+      background:linear-gradient(160deg,rgba(108,99,255,.08) 0%,var(--surface) 60%);
+      position:relative; overflow:hidden;
+      box-shadow:0 20px 50px rgba(108,99,255,.12), var(--shadow-card);
+    }
+    .combo-card::before {
+      content:""; position:absolute; top:0; left:0; right:0; height:3px;
+      background:linear-gradient(90deg,var(--primary),var(--primary-light),var(--secondary));
+    }
+    .combo-layout { display:grid; gap:36px; align-items:center; }
+    @media(min-width:900px){ .combo-layout { grid-template-columns:1fr auto; } }
+    .combo-points { display:grid; gap:10px; margin-top:20px; }
+    .combo-point { display:flex; align-items:flex-start; gap:10px; font-size:0.9rem; color:var(--text-muted); }
+    .combo-point-dot { width:6px; height:6px; border-radius:50%; background:var(--secondary); box-shadow:0 0 8px var(--secondary); flex:none; margin-top:6px; }
+
+    /* ─── CTA FINAL ─── */
+    .cta-section { padding:100px 0; }
+    .cta-card {
+      padding:60px 48px;
+      border-radius:var(--radius-lg);
+      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(160deg,rgba(108,99,255,.07) 0%,var(--surface) 50%);
+      text-align:center;
+      position:relative; overflow:hidden;
+      box-shadow:var(--shadow-card);
+    }
+    .cta-card::before {
+      content:""; position:absolute; top:-1px; left:20%; right:20%; height:2px;
+      background:linear-gradient(90deg,transparent,var(--primary),var(--primary-light),transparent);
+    }
+    .cta-card h2 { margin-bottom:16px; }
+    .cta-card p { color:var(--text-muted); font-size:1.02rem; line-height:1.7; max-width:520px; margin:0 auto 32px; }
+    .cta-actions { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+    @media(max-width:480px){ .cta-actions { flex-direction:column; align-items:stretch; } }
+
+    /* ─── FOOTER ─── */
+    .footer { padding:40px 0; }
+    .footer-unified{display:grid;grid-template-columns:1.8fr 1fr 1.2fr;gap:36px;background:linear-gradient(180deg,rgba(28,28,28,.96),rgba(20,20,20,.9));border:1px solid var(--border);border-radius:12px;padding:32px 36px;}
+    @media(max-width:900px){.footer-unified{grid-template-columns:1fr 1fr;}}
+    @media(max-width:600px){.footer-unified{grid-template-columns:1fr;gap:22px;padding:22px 18px;}}
+    .footer-logo{font-size:1.1rem;font-weight:900;margin-bottom:10px;}
+    .footer-logo span{color:var(--primary);}
+    .footer-tagline{font-size:0.8rem;color:var(--text-muted);line-height:1.65;margin-bottom:14px;max-width:260px;}
+    .footer-legal{font-size:0.78rem;color:var(--text-muted);}
+    .footer-col-title{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:10px;}
+    .footer-links-col{display:flex;flex-direction:column;gap:8px;}
+    .footer-links-col a{font-size:0.82rem;color:var(--text-muted);text-decoration:none;transition:color .2s;}
+    .footer-links-col a:hover{color:var(--text);}
+
+    /* ─── WHATSAPP FAB ─── */
+    .whatsapp-fab { position:fixed; right:20px; bottom:28px; z-index:940; display:flex; align-items:center; gap:10px; padding:12px 18px 12px 14px; border-radius:999px; background:#25D366; color:#fff; font-size:0.87rem; font-weight:700; box-shadow:0 4px 24px rgba(37,211,102,.38); transition:transform var(--transition), box-shadow var(--transition), opacity var(--transition); opacity:0; pointer-events:none; transform:scale(.86); }
+    .whatsapp-fab.visible { opacity:1; pointer-events:auto; transform:scale(1); }
+    .whatsapp-fab:hover { transform:scale(1.05); box-shadow:0 6px 32px rgba(37,211,102,.55); }
+
+    /* â”€â”€â”€ FOCUS VISIBLE (Accesibilidad) â”€â”€â”€ */
+    :focus-visible {
+      outline: 2px solid rgba(108, 99, 255, 0.8);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid rgba(108, 99, 255, 0.8);
+      outline-offset: 3px;
+    }  </style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <header class="site-header" id="site-header">
+    <nav class="nav">
+      <a href="./index.html" class="nav-brand">NDR <span>Marketing</span></a>
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-label="Abrir menú">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="2" y1="5" x2="16" y2="5"/><line x1="2" y1="9" x2="16" y2="9"/><line x1="2" y1="13" x2="16" y2="13"/></svg>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="./index.html">Paid Media</a></li>
+        <li><a href="./diseño-web.html">Diseño Web</a></li>
+        <li><a href="./quienes-somos.html">Quiénes Somos</a></li>
+        <li><a href="./portafolio.html">Portafolio</a></li>
+        <li><a href="./precios-web.html" class="active">Precios Web</a></li>
+        <li><a href="./diseño-web.html#contacto-web">Contacto</a></li>
+      </ul>
+      <a href="./diseño-web.html#contacto-web" class="nav-cta">Cotizar proyecto</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ══════════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════════ -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+
+          <div class="hero-badge reveal is-visible">
+            <span class="hero-badge-dot"></span>
+            Precios · Diseño Web
+          </div>
+
+          <h1 class="reveal is-visible">
+            Precios claros,<br>
+            <span class="gradient-text">sin sorpresas</span>
+          </h1>
+
+          <p class="hero-lead reveal is-visible">
+            Cada proyecto se cotiza según el alcance real. Estos son los rangos orientativos. La consulta inicial es siempre gratis.
+          </p>
+
+          <div class="urgency-bar reveal is-visible">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Tomo un número limitado de proyectos por mes — si hay lugar disponible, lo vemos en la consulta.
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         PRICING CARDS
+    ══════════════════════════════════════════════ -->
+    <section class="pricing-section">
+      <div class="container">
+        <div class="pricing-grid">
+
+          <!-- Plan Básico -->
+          <div class="pricing-card reveal">
+            <div class="pricing-card-top-border grey"></div>
+            <p class="pricing-plan-name">Plan Básico</p>
+            <p class="pricing-price">Desde $150.000 <small style="font-size:0.55em;font-weight:600;">CLP</small></p>
+            <p class="pricing-price-note">Ideal para lanzarte al mundo online rápido</p>
+            <div class="pricing-divider"></div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> Landing page 1 página</li>
+              <li><span class="check">✓</span> Diseño personalizado</li>
+              <li><span class="check">✓</span> WordPress o Vercel</li>
+              <li><span class="check">✓</span> Formulario de contacto</li>
+              <li><span class="check">✓</span> SEO básico on-page</li>
+              <li><span class="check">✓</span> Mobile optimizado</li>
+              <li><span class="check">✓</span> Entrega en 5–7 días hábiles</li>
+            </ul>
+            <div class="pricing-cta">
+              <a href="./diseño-web.html#contacto-web" class="btn btn-secondary btn-full">Cotizar →</a>
+            </div>
+          </div>
+
+          <!-- Plan Profesional (FEATURED) -->
+          <div class="pricing-card featured reveal">
+            <div class="pricing-card-top-border purple"></div>
+            <div class="featured-badge">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              Más popular
+            </div>
+            <p class="pricing-plan-name">Plan Profesional</p>
+            <p class="pricing-price">Desde $450.000 <small style="font-size:0.55em;font-weight:600;">CLP</small></p>
+            <p class="pricing-price-note">Para negocios que quieren crecer en serio</p>
+            <div class="pricing-divider"></div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> Sitio multi-página completo (hasta 6 secciones)</li>
+              <li><span class="check">✓</span> Diseño UI/UX a medida</li>
+              <li><span class="check">✓</span> WordPress, Shopify, Tiendanube o Vercel</li>
+              <li><span class="check">✓</span> Meta Pixel + Google Tag + conversiones</li>
+              <li><span class="check">✓</span> Formularios avanzados con integración</li>
+              <li><span class="check">✓</span> Optimización de velocidad (Core Web Vitals)</li>
+              <li><span class="check">✓</span> Soporte 30 días post-lanzamiento</li>
+              <li><span class="check">✓</span> Capacitación para gestionar el sitio</li>
+            </ul>
+            <div class="pricing-cta">
+              <a href="./diseño-web.html#contacto-web" class="btn btn-primary btn-full">Cotizar →</a>
+            </div>
+          </div>
+
+          <!-- Plan Ecommerce -->
+          <div class="pricing-card reveal">
+            <div class="pricing-card-top-border grey"></div>
+            <p class="pricing-plan-name">Plan Ecommerce</p>
+            <p class="pricing-price">Desde $700.000 <small style="font-size:0.55em;font-weight:600;">CLP</small></p>
+            <p class="pricing-price-note">Tu tienda online lista para vender desde el día 1</p>
+            <div class="pricing-divider"></div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> Shopify o Tiendanube completo</li>
+              <li><span class="check">✓</span> Diseño de tema a medida</li>
+              <li><span class="check">✓</span> Carga de productos, configuración de pagos y envíos</li>
+              <li><span class="check">✓</span> Webpay, Mercado Pago, tarjeta</li>
+              <li><span class="check">✓</span> Integración Meta + Google Ads lista</li>
+              <li><span class="check">✓</span> Seguimiento de pedidos</li>
+              <li><span class="check">✓</span> Capacitación completa</li>
+              <li><span class="check">✓</span> Soporte 60 días post-lanzamiento</li>
+            </ul>
+            <div class="pricing-cta">
+              <a href="./diseño-web.html#contacto-web" class="btn btn-secondary btn-full">Cotizar →</a>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="pricing-note reveal">Los precios son orientativos. Cada proyecto se cotiza según el alcance real.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         COMPARISON TABLE
+    ══════════════════════════════════════════════ -->
+    <section class="table-section section-dark">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <div class="kicker"><span class="kicker-dot"></span>Comparativa</div>
+          <h2>¿Qué incluye cada plan?</h2>
+          <p class="section-copy">Todas las diferencias en detalle para que elijas sin dudas.</p>
+        </div>
+
+        <div class="table-wrapper reveal">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Característica</th>
+                <th>Básico</th>
+                <th class="featured-col">Profesional</th>
+                <th>Ecommerce</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Número de páginas</td>
+                <td>1</td>
+                <td class="featured-col">Hasta 6</td>
+                <td>Ilimitadas</td>
+              </tr>
+              <tr>
+                <td>Diseño personalizado</td>
+                <td><span class="check-icon">✓</span></td>
+                <td class="featured-col"><span class="check-icon">✓</span></td>
+                <td><span class="check-icon">✓</span></td>
+              </tr>
+              <tr>
+                <td>Plataformas</td>
+                <td>WP / Vercel</td>
+                <td class="featured-col">WP / Shopify / TN / Vercel</td>
+                <td>Shopify / Tiendanube</td>
+              </tr>
+              <tr>
+                <td>Formulario de contacto</td>
+                <td><span class="check-icon">✓</span></td>
+                <td class="featured-col"><span class="check-icon">✓</span> Avanzado</td>
+                <td><span class="check-icon">✓</span></td>
+              </tr>
+              <tr>
+                <td>SEO on-page</td>
+                <td>Básico</td>
+                <td class="featured-col">Completo</td>
+                <td>Completo</td>
+              </tr>
+              <tr>
+                <td>Meta Pixel + GTM</td>
+                <td><span class="dash-icon">—</span></td>
+                <td class="featured-col"><span class="check-icon">✓</span></td>
+                <td><span class="check-icon">✓</span></td>
+              </tr>
+              <tr>
+                <td>Google Ads conversion</td>
+                <td><span class="dash-icon">—</span></td>
+                <td class="featured-col"><span class="check-icon">✓</span></td>
+                <td><span class="check-icon">✓</span></td>
+              </tr>
+              <tr>
+                <td>Pasarela de pagos</td>
+                <td><span class="dash-icon">—</span></td>
+                <td class="featured-col"><span class="dash-icon">—</span></td>
+                <td><span class="check-icon">✓</span> Webpay + MercadoPago</td>
+              </tr>
+              <tr>
+                <td>Catálogo de productos</td>
+                <td><span class="dash-icon">—</span></td>
+                <td class="featured-col"><span class="dash-icon">—</span></td>
+                <td><span class="check-icon">✓</span> Ilimitado</td>
+              </tr>
+              <tr>
+                <td>Soporte post-lanzamiento</td>
+                <td><span class="dash-icon">—</span></td>
+                <td class="featured-col">30 días</td>
+                <td>60 días</td>
+              </tr>
+              <tr>
+                <td>Capacitación</td>
+                <td><span class="dash-icon">—</span></td>
+                <td class="featured-col"><span class="check-icon">✓</span></td>
+                <td><span class="check-icon">✓</span> Completa</td>
+              </tr>
+              <tr>
+                <td>Tiempo de entrega</td>
+                <td>5–7 días</td>
+                <td class="featured-col">2–3 semanas</td>
+                <td>3–4 semanas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         MÉTODOS DE PAGO
+    ══════════════════════════════════════════════ -->
+    <section class="payment-section">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <div class="kicker"><span class="kicker-dot"></span>Facilidades</div>
+          <h2>Métodos de pago disponibles</h2>
+        </div>
+
+        <div class="payment-badges">
+
+          <div class="payment-badge reveal" style="border-color:rgba(0,169,206,.25);">
+            <div class="payment-badge-icon" style="background:rgba(0,169,206,.12);border:1px solid rgba(0,169,206,.25);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00A9CE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            </div>
+            <span style="color:#00A9CE;font-weight:800;">Transbank</span>
+          </div>
+
+          <div class="payment-badge reveal" style="border-color:rgba(0,158,227,.25);">
+            <div class="payment-badge-icon" style="background:rgba(0,158,227,.12);border:1px solid rgba(0,158,227,.25);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#009EE3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            </div>
+            <span style="color:#009EE3;font-weight:800;">Mercado Pago</span>
+          </div>
+
+          <div class="payment-badge reveal" style="border-color:rgba(0,229,160,.2);">
+            <div class="payment-badge-icon" style="background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.22);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <span style="color:var(--secondary);font-weight:800;">Transferencia bancaria</span>
+          </div>
+
+          <div class="payment-badge reveal" style="border-color:rgba(139,132,255,.25);">
+            <div class="payment-badge-icon" style="background:rgba(139,132,255,.12);border:1px solid rgba(139,132,255,.25);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 12h6M9 16h4"/></svg>
+            </div>
+            <span style="color:var(--primary-light);font-weight:800;">Pago en cuotas</span>
+          </div>
+
+        </div>
+
+        <p class="payment-note reveal">Tarjeta débito y crédito con hasta 12 cuotas vía Transbank · Sin interés en cuotas seleccionadas</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         FAQ
+    ══════════════════════════════════════════════ -->
+    <section class="faq-section section-dark">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <div class="kicker"><span class="kicker-dot"></span>Preguntas frecuentes</div>
+          <h2>Todo lo que necesitas saber</h2>
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item reveal">
+            <button class="faq-q" aria-expanded="false">
+              ¿Cuánto cuesta hacer una página web?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Depende del alcance. Una landing básica parte en $150.000 CLP. Un sitio completo entre $450.000 y $700.000 CLP. Cotizo gratis en la consulta.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-q" aria-expanded="false">
+              ¿Cuánto tarda en estar listo?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Landing 5–7 días hábiles. Sitio completo 2–4 semanas. Te doy un plazo exacto antes de empezar.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-q" aria-expanded="false">
+              ¿Se puede pagar en cuotas?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Sí. Transbank permite hasta 12 cuotas con tarjeta de crédito. También acepto transferencia y Mercado Pago.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-q" aria-expanded="false">
+              ¿El precio incluye dominio y hosting?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-a">
+              <p>No van incluidos, van por tu cuenta. Te ayudo a configurarlos y recomiendo opciones según la plataforma.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-q" aria-expanded="false">
+              ¿Qué pasa si no me gusta el diseño?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Presentamos propuesta visual antes de desarrollar. Incluye 2 rondas de ajustes sin costo.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-q" aria-expanded="false">
+              ¿Hay costos mensuales después?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Solo si contratas mantenimiento. El sitio es tuyo. Shopify y Tiendanube tienen suscripción propia de la plataforma.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-q" aria-expanded="false">
+              ¿Puedo pedir solo partes del servicio?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Sí. Puedo hacer solo el diseño, solo la implementación, o solo el tracking. Lo adaptamos a lo que necesitas.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         COMBO
+    ══════════════════════════════════════════════ -->
+    <section class="combo-section section-violet">
+      <div class="container">
+        <div class="combo-card reveal-scale">
+          <div class="combo-layout">
+            <div>
+              <div class="kicker" style="margin-bottom:16px;"><span class="kicker-dot"></span>Combinación ideal</div>
+              <h2 style="margin-bottom:14px;">Combo recomendado:<br>Web + Paid Media</h2>
+              <p style="color:var(--text-muted);font-size:1rem;line-height:1.7;max-width:560px;">Si vas a invertir en Meta Ads o Google Ads, la landing tiene que estar diseñada para eso. El tracking perfecto desde el día 1. Con el combo, el sitio y las campañas hablan el mismo idioma desde el inicio.</p>
+              <div class="combo-points">
+                <div class="combo-point">
+                  <span class="combo-point-dot"></span>
+                  Sitio diseñado específicamente para el objetivo de la campaña
+                </div>
+                <div class="combo-point">
+                  <span class="combo-point-dot"></span>
+                  Pixel, Google Tag y eventos de conversión configurados antes del primer peso
+                </div>
+                <div class="combo-point">
+                  <span class="combo-point-dot"></span>
+                  Landing + campaña + tracking coherentes — más ROAS desde el inicio
+                </div>
+                <div class="combo-point">
+                  <span class="combo-point-dot"></span>
+                  Una sola persona responsable de todo. Sin fricción.
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;padding-top:8px;">
+              <a href="./index.html" class="btn btn-primary btn-lg" style="white-space:nowrap;">Ver servicio Paid Media →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         CTA FINAL
+    ══════════════════════════════════════════════ -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-card reveal-scale">
+          <div class="kicker" style="justify-content:center;margin-bottom:20px;"><span class="kicker-dot"></span>Empecemos</div>
+          <h2>¿Trabajamos en tu proyecto?</h2>
+          <p>La consulta es gratis. Cuéntame qué necesitas y en 24 horas te respondo con una propuesta concreta o preguntas para entender mejor tu caso.</p>
+          <div class="cta-actions">
+            <a href="https://wa.me/56926879731?text=Hola%20Nicol%C3%A1s%2C%20vi%20tu%20p%C3%A1gina%20de%20precios%20web%20y%20me%20interesa%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer" class="btn btn-green btn-lg">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.118 1.532 5.845L.057 23.882l6.198-1.625A11.93 11.93 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 0 1-5.031-1.388l-.36-.214-3.733.979 1-3.638-.235-.374A9.799 9.799 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+              WhatsApp
+            </a>
+            <a href="./diseño-web.html#contacto-web" class="btn btn-secondary btn-lg">Ir al formulario →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-unified">
+        <div>
+          <div class="footer-logo"><span>NDR</span> Marketing</div>
+          <p class="footer-tagline">Paid Media + Diseño Web para ecommerce, servicios y profesionales en Chile. Trato directo, sin intermediarios.</p>
+          <p class="footer-legal">NDR Marketing SpA · © <span id="current-year">2026</span> Todos los derechos reservados.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Páginas</div>
+          <div class="footer-links-col">
+            <a href="./index.html">Paid Media</a>
+            <a href="./diseño-web.html">Diseño Web</a>
+            <a href="./quienes-somos.html">Quiénes Somos</a>
+            <a href="./portafolio.html">Portafolio</a>
+            <a href="./precios-web.html">Precios Web</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Contacto</div>
+          <div class="footer-links-col">
+            <a href="https://www.instagram.com/nicolaseganar/" target="_blank" rel="noopener noreferrer">Instagram @nicolaseganar</a>
+            <a href="https://cl.linkedin.com/in/nicolas-ega%C3%B1a-4b96632a4" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://wa.me/56926879731" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          </div>
+          <div class="footer-col-title" style="margin-top:18px;">Legal</div>
+          <div class="footer-links-col">
+            <a href="./politica-privacidad.html">Política de privacidad</a>
+            <a href="./terminos-servicio.html">Términos de servicio</a>
+            <a href="./politica-cookies.html">Política de cookies</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-fab" id="whatsapp-fab" href="https://wa.me/56926879731?text=Hola%20Nicol%C3%A1s%2C%20vi%20tu%20p%C3%A1gina%20de%20precios%20web%20y%20me%20interesa%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.118 1.532 5.845L.057 23.882l6.198-1.625A11.93 11.93 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 0 1-5.031-1.388l-.36-.214-3.733.979 1-3.638-.235-.374A9.799 9.799 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+    WhatsApp
+  </a>
+
+  <script>
+    // Header scroll + progress
+    const header = document.getElementById("site-header");
+    const progress = document.getElementById("scroll-progress");
+    const whatsappFab = document.getElementById("whatsapp-fab");
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("scrolled", window.scrollY > 24);
+      const sh = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = sh > 0 ? `${(window.scrollY / sh) * 100}%` : "0%";
+      whatsappFab.classList.toggle("visible", window.scrollY > 400);
+    }, { passive: true });
+
+    // Mobile menu
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+    menuToggle.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", open);
+    });
+    navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }));
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-visible");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -36px 0px" });
+    document.querySelectorAll(".reveal, .reveal-scale, .reveal-left, .reveal-right").forEach(el => io.observe(el));
+    document.querySelectorAll(".hero .reveal, .hero .reveal-scale, .hero .reveal-right, .hero .reveal-left").forEach(el => el.classList.add("is-visible"));
+
+    // FAQ accordion
+    document.querySelectorAll(".faq-item").forEach(item => {
+      item.querySelector(".faq-q").addEventListener("click", () => {
+        const open = item.classList.contains("open");
+        document.querySelectorAll(".faq-item").forEach(f => {
+          f.classList.remove("open");
+          f.querySelector(".faq-q").setAttribute("aria-expanded", "false");
+          f.querySelector(".faq-toggle").textContent = "+";
+        });
+        if (!open) {
+          item.classList.add("open");
+          item.querySelector(".faq-q").setAttribute("aria-expanded", "true");
+          item.querySelector(".faq-toggle").textContent = "×";
+        }
+      });
+    });
+
+    // Footer year
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
+
+  <!-- ══════════ UX ENHANCEMENTS ══════════ -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+  <div id="scroll-bar" aria-hidden="true"></div>
+  <style>
+    #cursor-glow { position:fixed; pointer-events:none; z-index:0; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(108,99,255,.055) 0%,transparent 65%); transform:translate(-50%,-50%); transition:opacity 700ms ease; top:0; left:0; opacity:0; }
+    #particle-canvas { position:fixed; inset:0; z-index:0; pointer-events:none; }
+    #scroll-bar { position:fixed; top:0; left:0; z-index:9999; height:2px; width:0%; background:linear-gradient(90deg,#6c63ff,#00e5a0); transition:width 60ms linear; }
+
+    /* â”€â”€â”€ FOCUS VISIBLE (Accesibilidad) â”€â”€â”€ */
+    :focus-visible {
+      outline: 2px solid rgba(108, 99, 255, 0.8);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid rgba(108, 99, 255, 0.8);
+      outline-offset: 3px;
+    }  </style>
+  <script>
+  (function(){
+    const noMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const bar=document.getElementById('scroll-bar');
+    window.addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';},{passive:true});
+    const glow=document.getElementById('cursor-glow');
+    const isFine=window.matchMedia('(pointer:fine)').matches;
+    if(isFine&&glow){let cx=0,cy=0,tx=0,ty=0,on=false;document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;if(!on){glow.style.opacity='1';on=true;}});document.addEventListener('mouseleave',()=>{glow.style.opacity='0';on=false;});const lerp=(a,b,t)=>a+(b-a)*t;if(!noMotion){const t=()=>{cx=lerp(cx,tx,.07);cy=lerp(cy,ty,.07);glow.style.left=cx+'px';glow.style.top=cy+'px';requestAnimationFrame(t);};t();}}
+    if(isFine&&!noMotion){document.querySelectorAll('.button-primary,.button,.nav-cta').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.22}px,${(e.clientY-r.top-r.height/2)*.22}px) translateY(-1px)`;});b.addEventListener('mouseleave',()=>{b.style.transform='';});});}
+    if(noMotion)return;
+    const canvas=document.getElementById('particle-canvas');if(!canvas)return;
+    const ctx=canvas.getContext('2d');let W,H;
+    const resize=()=>{W=canvas.width=innerWidth;H=canvas.height=innerHeight;};resize();window.addEventListener('resize',resize,{passive:true});
+    const N=innerWidth<768?30:60;
+    const pts=Array.from({length:N},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,r:Math.random()*1.1+.35,v:Math.random()>.45}));
+    let mx=-9999,my=-9999;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
+    const CONN=105,MOUSE=120;
+    const draw=()=>{ctx.clearRect(0,0,W,H);for(let i=0;i<N;i++){const p=pts[i];const dx=p.x-mx,dy=p.y-my,d=Math.hypot(dx,dy);if(d<MOUSE){const f=(MOUSE-d)/MOUSE*.055;p.vx+=(dx/d)*f;p.vy+=(dy/d)*f;}p.vx*=.984;p.vy*=.984;p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.v?'rgba(108,99,255,.5)':'rgba(0,229,160,.45)';ctx.fill();for(let j=i+1;j<N;j++){const q=pts[j],ed=Math.hypot(p.x-q.x,p.y-q.y);if(ed<CONN){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=`rgba(108,99,255,${(1-ed/CONN)*.1})`;ctx.lineWidth=.55;ctx.stroke();}}}requestAnimationFrame(draw);};
+    draw();
+  })();
+  </script>
+
+</body>
+</html>

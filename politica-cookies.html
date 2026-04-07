@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="./config-loader.js" defer></script>
+  <title>Política de Cookies · NDR Marketing SpA</title>
+  <meta name="description" content="Política de cookies de NDR Marketing SpA. Tipos de cookies utilizadas, finalidades y cómo gestionar tus preferencias.">
+  <meta name="robots" content="noindex, follow">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d;
+      --surface: #1a1a1a;
+      --border: #2a2a2a;
+      --text: #f5f5f5;
+      --text-muted: #9ca3af;
+      --primary: #6c63ff;
+      --secondary: #00e5a0;
+      --accent: #ff9f43;
+      --radius-lg: 12px;
+      --transition: 0.2s ease;
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .nav { position: sticky; top: 0; z-index: 100; background: rgba(13,13,13,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 14px 0; }
+    .nav-inner { max-width: 900px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-weight: 900; font-size: 1rem; color: var(--text); }
+    .nav-logo span { color: var(--primary); }
+    .nav-back { font-size: 0.84rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px; transition: color var(--transition); }
+    .nav-back:hover { color: var(--text); text-decoration: none; }
+
+    .page-wrap { max-width: 780px; margin: 0 auto; padding: 60px 20px 80px; }
+    .page-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 900; margin-bottom: 8px; }
+    .page-meta { font-size: 0.84rem; color: var(--text-muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    h2 { font-size: 1.15rem; font-weight: 700; margin: 36px 0 12px; color: var(--text); }
+    p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px; }
+    ul { padding-left: 20px; margin-bottom: 14px; }
+    li { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 6px; }
+    .highlight-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px 24px; margin: 24px 0; }
+    .highlight-box p { margin: 0; font-size: 0.88rem; }
+    strong { color: var(--text); font-weight: 600; }
+    .email-link { color: var(--secondary); }
+
+    /* Cookie table */
+    .cookie-table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 0.84rem; }
+    .cookie-table th { background: var(--surface); color: var(--text-muted); font-weight: 600; text-align: left; padding: 10px 14px; border: 1px solid var(--border); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .cookie-table td { padding: 10px 14px; border: 1px solid var(--border); color: var(--text-muted); vertical-align: top; }
+    .cookie-table tr:nth-child(even) td { background: rgba(255,255,255,.02); }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+    .badge-esencial { background: rgba(0,229,160,.15); color: var(--secondary); }
+    .badge-analitica { background: rgba(108,99,255,.15); color: var(--primary); }
+    .badge-marketing { background: rgba(255,159,67,.15); color: var(--accent); }
+
+    .footer { padding: 40px 0; }
+    .footer-unified{display:grid;grid-template-columns:1.8fr 1fr 1.2fr;gap:36px;background:linear-gradient(180deg,rgba(28,28,28,.96),rgba(20,20,20,.9));border:1px solid var(--border);border-radius:12px;padding:32px 36px;}
+    @media(max-width:900px){.footer-unified{grid-template-columns:1fr 1fr;}}
+    @media(max-width:600px){.footer-unified{grid-template-columns:1fr;gap:22px;padding:22px 18px;}}
+    .footer-logo{font-size:1.1rem;font-weight:900;margin-bottom:10px;}
+    .footer-logo span{color:var(--primary);}
+    .footer-tagline{font-size:0.8rem;color:var(--text-muted);line-height:1.65;margin-bottom:14px;max-width:260px;}
+    .footer-legal{font-size:0.76rem;color:var(--text-muted);}
+    .footer-col-title{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:10px;}
+    .footer-links-col{display:flex;flex-direction:column;gap:8px;}
+    .footer-links-col a{font-size:0.82rem;color:var(--text-muted);text-decoration:none;transition:color .2s;}
+    .footer-links-col a:hover{color:var(--text);}
+
+    /* â”€â”€â”€ FOCUS VISIBLE (Accesibilidad) â”€â”€â”€ */
+    :focus-visible {
+      outline: 2px solid rgba(108, 99, 255, 0.8);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid rgba(108, 99, 255, 0.8);
+      outline-offset: 3px;
+    }  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="./index.html" class="nav-logo"><span>NDR</span> Marketing</a>
+      <a href="javascript:history.back()" class="nav-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Volver
+      </a>
+    </div>
+  </nav>
+
+  <main class="page-wrap">
+    <h1 class="page-title">Política de Cookies</h1>
+    <p class="page-meta">NDR Marketing SpA · Última actualización: abril de 2026</p>
+
+    <div class="highlight-box">
+      <p>Este documento explica qué son las cookies, cuáles utiliza <strong>ndrmarketing.cl</strong>, para qué sirven y cómo puedes gestionar tus preferencias.</p>
+    </div>
+
+    <h2>1. ¿Qué son las cookies?</h2>
+    <p>Las cookies son pequeños archivos de texto que un sitio web almacena en tu dispositivo cuando lo visitas. Permiten que el sitio recuerde tus preferencias, analice cómo lo usas y, en algunos casos, muestre publicidad relevante.</p>
+    <p>Además de cookies, también usamos <strong>tecnologías similares</strong> como píxeles de seguimiento (Meta Pixel), balizas web y almacenamiento local del navegador, que funcionan de manera parecida.</p>
+
+    <h2>2. Tipos de cookies que usamos</h2>
+
+    <table class="cookie-table">
+      <thead>
+        <tr>
+          <th>Cookie / Tecnología</th>
+          <th>Proveedor</th>
+          <th>Tipo</th>
+          <th>Duración</th>
+          <th>Finalidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ndr_admin_config</strong></td>
+          <td>NDR Marketing</td>
+          <td><span class="badge badge-esencial">Esencial</span></td>
+          <td>Persistente (localStorage)</td>
+          <td>Guarda configuración de administración del sitio (solo uso interno).</td>
+        </tr>
+        <tr>
+          <td><strong>_ga, _ga_*</strong></td>
+          <td>Google Analytics 4</td>
+          <td><span class="badge badge-analitica">Analítica</span></td>
+          <td>2 años</td>
+          <td>Identifica sesiones únicas y mide el comportamiento de los usuarios en el sitio.</td>
+        </tr>
+        <tr>
+          <td><strong>_gcl_au</strong></td>
+          <td>Google Ads</td>
+          <td><span class="badge badge-marketing">Marketing</span></td>
+          <td>90 días</td>
+          <td>Almacena información para medir conversiones de Google Ads.</td>
+        </tr>
+        <tr>
+          <td><strong>_fbp</strong></td>
+          <td>Meta (Facebook)</td>
+          <td><span class="badge badge-marketing">Marketing</span></td>
+          <td>90 días</td>
+          <td>Identifica navegadores para medir efectividad de anuncios en Meta y crear audiencias de remarketing.</td>
+        </tr>
+        <tr>
+          <td><strong>_fbc</strong></td>
+          <td>Meta (Facebook)</td>
+          <td><span class="badge badge-marketing">Marketing</span></td>
+          <td>90 días</td>
+          <td>Almacena el parámetro fbclid de URLs de anuncios para atribución de clics.</td>
+        </tr>
+        <tr>
+          <td><strong>fr</strong></td>
+          <td>Meta (Facebook)</td>
+          <td><span class="badge badge-marketing">Marketing</span></td>
+          <td>90 días</td>
+          <td>Cookie de publicidad principal de Facebook para mostrar anuncios relevantes dentro de Meta.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>3. Cookies esenciales</h2>
+    <p>Las cookies esenciales son necesarias para el funcionamiento básico del sitio. No requieren tu consentimiento y no pueden desactivarse. En nuestro caso, únicamente almacenamos preferencias de configuración en localStorage para la administración interna del sitio.</p>
+
+    <h2>4. Cookies de analítica (Google Analytics 4)</h2>
+    <p>Usamos Google Analytics 4 para entender cómo los visitantes interactúan con nuestro sitio: qué páginas visitan, cuánto tiempo permanecen, desde qué dispositivos acceden, etc. Esta información nos ayuda a mejorar el sitio y los servicios que ofrecemos.</p>
+    <p>Los datos se envían a Google LLC (EE.UU.) con aplicación de medidas de seguridad adecuadas. Puedes optar por no ser rastreado instalando el <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">complemento de exclusión de Google Analytics</a>.</p>
+
+    <h2>5. Cookies de marketing (Meta Pixel y Google Ads)</h2>
+    <p><strong>Meta Pixel</strong> nos permite medir cuántas personas que ven nuestros anuncios en Facebook o Instagram terminan visitando el sitio o contactándonos. También nos permite crear audiencias personalizadas y "lookalike" para mostrar anuncios a personas con perfiles similares a nuestros clientes.</p>
+    <p><strong>Google Ads Conversion Tracking</strong> mide las acciones realizadas en el sitio por usuarios que llegaron a través de anuncios de Google.</p>
+    <p>Estas cookies solo se activan si aceptas las cookies de marketing.</p>
+
+    <h2>6. Cómo gestionar tus preferencias de cookies</h2>
+    <p>Puedes gestionar o eliminar las cookies en cualquier momento:</p>
+    <ul>
+      <li><strong>Configuración del navegador:</strong> la mayoría de los navegadores te permiten bloquear o eliminar cookies. Aquí los enlaces de los principales:
+        <ul style="margin-top:8px;">
+          <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">Google Chrome</a></li>
+          <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener noreferrer">Mozilla Firefox</a></li>
+          <li><a href="https://support.apple.com/es-cl/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Safari</a></li>
+          <li><a href="https://support.microsoft.com/es-es/windows/eliminar-y-administrar-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener noreferrer">Microsoft Edge</a></li>
+        </ul>
+      </li>
+      <li><strong>Google Analytics:</strong> instala el <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">complemento de exclusión</a>.</li>
+      <li><strong>Meta (Facebook):</strong> gestiona tu configuración de publicidad en <a href="https://www.facebook.com/ads/preferences/" target="_blank" rel="noopener noreferrer">facebook.com/ads/preferences</a>.</li>
+      <li><strong>Opt-out general de publicidad comportamental:</strong> visita <a href="https://optout.aboutads.info/" target="_blank" rel="noopener noreferrer">aboutads.info</a> o <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener noreferrer">youronlinechoices.eu</a>.</li>
+    </ul>
+    <p>Ten en cuenta que desactivar ciertas cookies puede afectar la funcionalidad del sitio o la relevancia de los anuncios que ves.</p>
+
+    <h2>7. Actualizaciones de esta política</h2>
+    <p>Podemos actualizar esta política cuando incorporemos nuevas tecnologías de seguimiento o cambie la legislación aplicable. La fecha de "última actualización" al inicio refleja el último cambio.</p>
+
+    <h2>8. Contacto</h2>
+    <p>Si tienes preguntas sobre el uso de cookies en este sitio:</p>
+    <div class="highlight-box">
+      <p><strong>NDR Marketing SpA</strong><br>
+      WhatsApp: <a href="https://wa.me/56926879731" class="email-link">+56 9 2687 9731</a><br>
+      Instagram: <a href="https://www.instagram.com/nicolaseganar/" class="email-link">@nicolaseganar</a></p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div style="max-width:900px;margin:0 auto;padding:0 20px;">
+      <div class="footer-unified">
+        <div>
+          <div class="footer-logo"><span>NDR</span> Marketing</div>
+          <p class="footer-tagline">Paid Media + Diseño Web para ecommerce, servicios y profesionales en Chile. Trato directo, sin intermediarios.</p>
+          <p class="footer-legal">NDR Marketing SpA · © <span id="current-year">2026</span> Todos los derechos reservados.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Páginas</div>
+          <div class="footer-links-col">
+            <a href="./index.html">Paid Media</a>
+            <a href="./diseño-web.html">Diseño Web</a>
+            <a href="./quienes-somos.html">Quiénes Somos</a>
+            <a href="./portafolio.html">Portafolio</a>
+            <a href="./precios-web.html">Precios Web</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Contacto</div>
+          <div class="footer-links-col">
+            <a href="https://www.instagram.com/nicolaseganar/" target="_blank" rel="noopener noreferrer">Instagram @nicolaseganar</a>
+            <a href="https://cl.linkedin.com/in/nicolas-ega%C3%B1a-4b96632a4" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://wa.me/56926879731" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          </div>
+          <div class="footer-col-title" style="margin-top:18px;">Legal</div>
+          <div class="footer-links-col">
+            <a href="./politica-privacidad.html">Política de privacidad</a>
+            <a href="./terminos-servicio.html">Términos de servicio</a>
+            <a href="./politica-cookies.html">Política de cookies</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

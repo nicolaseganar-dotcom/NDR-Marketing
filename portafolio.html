@@ -1,0 +1,887 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <script src="./config-loader.js" defer></script>
+  <title>Portafolio · NDR Marketing | Proyectos Web reales en Chile</title>
+  <meta name="description" content="Portafolio de proyectos web de NDR Marketing. Shopify, WordPress, Tiendanube, Vercel. Trenda.cl, NBA Store Chile, Vaypol y más. Proyectos en Chile y Argentina.">
+  <meta property="og:title" content="Portafolio · NDR Marketing | Proyectos reales, resultados reales">
+  <meta property="og:description" content="Cada proyecto tiene un objetivo claro de conversión. Shopify, Tiendanube, WordPress y Vercel para negocios en Chile.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ndrmarketing.cl/og-image.png">
+  <link rel="canonical" href="https://ndrmarketing.cl/portafolio.html">
+  <link rel="alternate" hreflang="es-CL" href="https://ndrmarketing.cl/portafolio.html">
+  <link rel="alternate" hreflang="es-AR" href="https://ndrmarketing.cl/portafolio.html">
+  <link rel="alternate" hreflang="es" href="https://ndrmarketing.cl/portafolio.html">
+  <link rel="alternate" hreflang="x-default" href="https://ndrmarketing.cl/">
+  <meta property="og:url" content="https://ndrmarketing.cl/portafolio.html">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:locale:alternate" content="es_AR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Portafolio · NDR Marketing | Proyectos reales en Chile y Argentina">
+  <meta name="twitter:description" content="Proyectos web y campañas de paid media reales: Shopify, WordPress, Tiendanube. Resultados para ecommerce, servicios y profesionales.">
+  <meta name="twitter:image" content="https://ndrmarketing.cl/og-image.png">
+  <meta name="theme-color" content="#080810">
+  <meta name="author" content="Nicolas Egana - NDR Marketing">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #1a1a1a;
+      --border: #2a2a2a;
+      --text: #f5f5f5;
+      --text-muted: #9ca3af;
+      --primary: #6c63ff;
+      --primary-light: #8b84ff;
+      --secondary: #00e5a0;
+      --accent: #ff9f43;
+      --danger: #ff6b7a;
+      --radius-lg: 12px;
+      --radius-md: 8px;
+      --radius-sm: 6px;
+      --shadow-primary: 0 0 0 1px rgba(108,99,255,0.12), 0 20px 40px rgba(108,99,255,0.12);
+      --shadow-card: 0 18px 40px rgba(0,0,0,0.28);
+      --container: min(1180px, calc(100% - 40px));
+      --transition: 220ms ease;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    ::-webkit-scrollbar { width:6px; } ::-webkit-scrollbar-track { background:var(--bg); } ::-webkit-scrollbar-thumb { background:rgba(108,99,255,.4); border-radius:3px; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(108,99,255,0.14), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(0,229,160,0.08), transparent 22%),
+        var(--bg);
+      color: var(--text); line-height: 1.65; overflow-x: hidden;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.015), transparent 18%),
+        radial-gradient(circle at 15% 10%, rgba(108,99,255,0.08), transparent 24%),
+        radial-gradient(circle at 85% 82%, rgba(0,229,160,0.06), transparent 18%);
+      pointer-events: none; opacity: 0.95; z-index: -1;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── SCROLL PROGRESS ─── */
+    .scroll-progress { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,var(--primary),var(--secondary)); z-index:1001; width:0; transition:width 80ms linear; }
+
+    /* ─── HEADER ─── */
+    .site-header { position: fixed; top:0; left:0; right:0; z-index:999; border-bottom:1px solid transparent; transition: background 260ms ease, border-color 260ms ease; }
+    .site-header.scrolled { background:rgba(13,13,13,0.86); backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%); border-color:rgba(255,255,255,0.06); }
+    .nav { display:flex; align-items:center; justify-content:space-between; min-height:80px; width:var(--container); margin:0 auto; }
+    .nav-brand { font-weight:900; font-size:1.1rem; letter-spacing:-0.03em; }
+    .nav-brand span { background:linear-gradient(135deg,var(--primary),var(--primary-light)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .nav-links { display:flex; align-items:center; gap:16px; list-style:none; margin:0; padding:0; }
+    .nav-links a { font-size:0.82rem; font-weight:500; color:var(--text-muted); transition:color var(--transition); }
+    .nav-links a:hover, .nav-links a.active { color:var(--text); }
+    .nav-cta { display:none; }
+    @media(min-width:1100px){
+      .nav-cta { display:inline-flex; align-items:center; padding:9px 22px; border-radius:var(--radius-md); background:linear-gradient(135deg,#6c63ff,#8b84ff); color:#fff; font-weight:700; font-size:0.87rem; box-shadow:0 2px 16px rgba(108,99,255,.4); transition:transform 180ms ease, box-shadow 180ms ease; }
+      .nav-cta:hover { transform:translateY(-1px); box-shadow:0 4px 24px rgba(108,99,255,.55); }
+    }
+    .menu-toggle { display:none; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,0.1); color:var(--text); padding:8px 10px; border-radius:var(--radius-sm); cursor:pointer; font-family:inherit; }
+    @media(max-width:767px){
+      .menu-toggle { display:flex; align-items:center; }
+      .nav-links { display:none; position:fixed; inset:66px 0 0; background:rgba(8,8,16,0.98); backdrop-filter:blur(24px); flex-direction:column; align-items:flex-start; padding:28px 24px; gap:22px; z-index:998; border-top:1px solid rgba(255,255,255,.06); }
+      .nav-links.open { display:flex; }
+      .nav-links a { font-size:1.08rem; }
+    }
+
+    /* ─── LAYOUT ─── */
+    .container { width:var(--container); margin:0 auto; }
+    .section { padding: 80px 0; position: relative; }
+    .section::after {
+      content: ""; position: absolute; top: 0; left: 50%;
+      width: min(1180px, calc(100% - 40px)); height: 1px; transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      opacity: 0.6; pointer-events: none;
+    }
+    .section-dark { background:rgba(0,0,0,0.22); border-top:1px solid rgba(255,255,255,.04); border-bottom:1px solid rgba(255,255,255,.04); }
+    .section-violet { background:linear-gradient(180deg,rgba(108,99,255,.06) 0%,rgba(108,99,255,.02) 100%); border-top:1px solid rgba(108,99,255,.08); }
+
+    /* ─── REVEAL ─── */
+    .reveal { opacity:0; transform:translateY(26px); transition:opacity 520ms cubic-bezier(.2,.8,.2,1), transform 520ms cubic-bezier(.2,.8,.2,1); }
+    .reveal.is-visible { opacity:1; transform:none; }
+    .reveal-scale { opacity:0; transform:scale(0.96); transition:opacity 480ms cubic-bezier(.2,.8,.2,1), transform 480ms cubic-bezier(.2,.8,.2,1); }
+    .reveal-scale.is-visible { opacity:1; transform:none; }
+    .reveal-left { opacity:0; transform:translateX(-24px); transition:opacity 500ms cubic-bezier(.2,.8,.2,1), transform 500ms cubic-bezier(.2,.8,.2,1); }
+    .reveal-left.is-visible { opacity:1; transform:none; }
+    .reveal-right { opacity:0; transform:translateX(24px); transition:opacity 500ms cubic-bezier(.2,.8,.2,1), transform 500ms cubic-bezier(.2,.8,.2,1); }
+    .reveal-right.is-visible { opacity:1; transform:none; }
+
+    /* ─── TYPE ─── */
+    h1,h2,h3 { margin:0; line-height:1.14; letter-spacing:-0.03em; }
+    h1 {
+      font-size: clamp(2.6rem,6.5vw,4.2rem); font-weight: 900;
+      background: linear-gradient(135deg, #ffffff 0%, #ecebff 52%, #adffe4 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      margin: 0 0 12px; line-height: 1.1; letter-spacing: -0.03em;
+    }
+    h2 { font-size: clamp(1.8rem,4vw,2.7rem); font-weight: 800; margin: 0 0 12px; line-height:1.1; letter-spacing:-0.03em; }
+    h3 { font-size: 1.1rem; font-weight: 700; margin: 0 0 8px; }
+    p { margin: 0; color: var(--text-muted); line-height: 1.68; }
+    .section-header { display:grid; gap:14px; max-width:640px; margin-bottom:56px; }
+    .kicker {
+      display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px;
+      color: #d7d5ff; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
+    }
+    .kicker::before {
+      content: ""; width: 40px; height: 1px;
+      background: linear-gradient(90deg, var(--primary), rgba(255,255,255,0.16), var(--secondary));
+      box-shadow: 0 0 14px rgba(108,99,255,0.3);
+    }
+    .kicker::after {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--secondary); box-shadow: 0 0 14px rgba(0,229,160,0.45);
+    }
+    .kicker-dot { display: none; }
+    .section-copy { color:var(--text-muted); font-size:1.02rem; line-height:1.7; }
+    .lead { font-size:1.08rem; color:var(--text-muted); line-height:1.74; }
+    .gradient-text { background:linear-gradient(135deg,var(--primary),var(--primary-light),var(--secondary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+    /* ─── BUTTONS ─── */
+    .btn, .btn-primary, .btn-ghost, .btn-wa {
+      position: relative; overflow: hidden;
+      display: inline-flex; align-items: center; gap: 8px;
+      min-height: 48px; padding: 0 22px;
+      border-radius: var(--radius-sm); font-weight: 700;
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer; border: none;
+    }
+    .btn::after, .btn-primary::after, .btn-ghost::after, .btn-wa::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(110deg, transparent 28%, rgba(255,255,255,0.22) 48%, transparent 68%);
+      transform: translateX(-140%); transition: transform 620ms ease; pointer-events: none;
+    }
+    .btn:hover, .btn-primary:hover, .btn-ghost:hover, .btn-wa:hover { transform: translateY(-1px); }
+    .btn:hover::after, .btn-primary:hover::after, .btn-ghost:hover::after, .btn-wa:hover::after { transform: translateX(140%); }
+    .btn-primary {
+      background: linear-gradient(135deg, #6c63ff 0%, #786eff 55%, #8f85ff 100%);
+      color: #fff; box-shadow: 0 18px 40px rgba(108,99,255,0.28);
+    }
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.16);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      color: var(--text);
+    }
+    .btn-ghost:hover { border-color: rgba(108,99,255,0.6); background: linear-gradient(180deg, rgba(108,99,255,0.14), rgba(255,255,255,0.03)); }
+    .btn-wa { background: linear-gradient(135deg, #25d366, #1da851); color: #fff; box-shadow: 0 18px 40px rgba(37,211,102,0.28); }
+    .btn-secondary { background:rgba(255,255,255,.05); color:var(--text); border:1px solid rgba(255,255,255,.12); backdrop-filter:blur(8px); }
+    .btn-secondary:hover { background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.24); }
+    .btn-lg { padding:17px 38px; font-size:1.02rem; }
+
+    /* ─── CARD ─── */
+    .card { background:var(--surface); border:1px solid rgba(255,255,255,.07); border-radius:var(--radius-lg); box-shadow:var(--shadow-card); padding:28px; }
+
+    /* ─── HERO ─── */
+    .hero { padding:140px 0 88px; position:relative; overflow:hidden; }
+    .hero::after { content:""; position:absolute; top:0; left:50%; transform:translateX(-50%); width:800px; height:800px; background:radial-gradient(circle, rgba(108,99,255,.12) 0%, transparent 70%); pointer-events:none; z-index:0; }
+    .hero-inner { position:relative; z-index:1; max-width:760px; }
+    .hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(108,99,255,.12); border:1px solid rgba(108,99,255,.22); border-radius:100px; padding:6px 16px; font-size:0.75rem; font-weight:700; letter-spacing:.06em; color:var(--primary-light); margin-bottom:24px; }
+    .hero-badge-dot { width:6px; height:6px; border-radius:50%; background:var(--secondary); box-shadow:0 0 8px var(--secondary); animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .hero h1 { margin-bottom:20px; }
+    .hero .lead { max-width:560px; margin-bottom:48px; }
+
+    /* Stats row */
+    .stats-row { display:flex; flex-wrap:wrap; gap:32px; }
+    .stat-item { display:flex; flex-direction:column; gap:4px; }
+    .stat-number { font-size:clamp(1.5rem,3vw,2.1rem); font-weight:900; letter-spacing:-0.04em; background:linear-gradient(135deg,var(--text),rgba(240,240,250,.7)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .stat-number.accent-green { background:linear-gradient(135deg,var(--secondary),#00b37d); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .stat-label { font-size:0.78rem; color:var(--text-muted); font-weight:500; }
+
+    /* ─── PORTFOLIO GRID ─── */
+    .portfolio-section { padding:100px 0; }
+    .portfolio-grid {
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:28px;
+    }
+    @media(max-width:1024px){ .portfolio-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:600px){ .portfolio-grid { grid-template-columns:1fr; } }
+
+    .portfolio-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(28,28,28,0.96), rgba(20,20,20,0.9));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display:flex;
+      flex-direction:column;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(108,99,255,0.5);
+      box-shadow: 0 0 0 1px rgba(108,99,255,0.2), 0 24px 48px rgba(108,99,255,0.12);
+    }
+
+    /* Browser mockup */
+    .portfolio-thumb { border-radius:12px 12px 0 0; overflow:hidden; background:#0d0d14; }
+    .browser-bar { display:flex; align-items:center; gap:8px; padding:9px 14px; background:rgba(255,255,255,.04); border-bottom:1px solid rgba(255,255,255,.06); }
+    .browser-dots { display:flex; gap:5px; }
+    .browser-dot { width:8px; height:8px; border-radius:50%; }
+    .browser-dot:nth-child(1) { background:#ff5f57; }
+    .browser-dot:nth-child(2) { background:#ffbd2e; }
+    .browser-dot:nth-child(3) { background:#28c840; }
+    .browser-url { flex:1; background:rgba(255,255,255,.06); border-radius:4px; padding:3px 10px; font-size:0.71rem; color:var(--text-muted); }
+    .portfolio-type-badge { font-size:0.65rem; font-weight:700; padding:2px 8px; border-radius:6px; background:rgba(108,99,255,.15); border:1px solid rgba(108,99,255,.25); color:var(--primary-light); white-space:nowrap; }
+    .browser-screen { position:relative; overflow:hidden; aspect-ratio:16/9; }
+    .screenshot { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; opacity:0; transition:opacity 600ms ease; }
+    .screenshot.loaded { opacity:1; }
+
+    /* Placeholder behind screenshot */
+    .browser-placeholder { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+
+    /* Card body */
+    .portfolio-body { padding:20px 22px 22px; display:flex; flex-direction:column; gap:10px; flex:1; }
+    .portfolio-body h3 { font-size:1rem; }
+    .portfolio-body p { font-size:0.88rem; color:var(--text-muted); line-height:1.6; }
+    .portfolio-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:2px; }
+    .tag { display:inline-flex; align-items:center; font-size:0.68rem; font-weight:600; padding:3px 9px; border-radius:6px; background:rgba(255,255,255,.06); color:var(--text-muted); border:1px solid rgba(255,255,255,.08); }
+    .tag-purple { background:rgba(108,99,255,.12); color:var(--primary-light); border-color:rgba(108,99,255,.22); }
+    .tag-green { background:rgba(0,229,160,.1); color:var(--secondary); border-color:rgba(0,229,160,.2); }
+    .tag-orange { background:rgba(255,159,67,.1); color:var(--accent); border-color:rgba(255,159,67,.2); }
+    .portfolio-link { margin-top:auto; font-size:0.83rem; font-weight:700; color:var(--primary-light); transition:color var(--transition), gap var(--transition); display:inline-flex; align-items:center; gap:4px; }
+    .portfolio-link:hover { color:var(--text); gap:8px; }
+
+    /* Highlight badge for special projects */
+    .project-highlight { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,rgba(0,229,160,.12),rgba(0,229,160,.06)); border:1px solid rgba(0,229,160,.22); border-radius:8px; padding:6px 12px; font-size:0.75rem; font-weight:700; color:var(--secondary); margin-top:4px; }
+    .project-badge-special { display:inline-flex; align-items:center; gap:5px; background:linear-gradient(135deg,rgba(200,16,46,.15),rgba(23,64,139,.12)); border:1px solid rgba(200,16,46,.28); border-radius:8px; padding:5px 10px; font-size:0.72rem; font-weight:700; color:#ff6b7a; }
+
+    /* CTA dashed card */
+    .portfolio-card-cta { border-style:dashed; border-color:rgba(108,99,255,.25); background:rgba(108,99,255,.04); }
+    .portfolio-card-cta:hover { border-color:rgba(108,99,255,.45); }
+    .cta-thumb { aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px; background:rgba(108,99,255,.06); color:var(--primary-light); }
+    .cta-thumb span { font-weight:700; font-size:0.9rem; }
+
+    /* ─── PLATFORMS ─── */
+    .platforms-grid {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+    }
+    @media(max-width:900px){ .platforms-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:480px){ .platforms-grid { grid-template-columns:1fr; } }
+    .platform-card { background:var(--surface); border:1px solid rgba(255,255,255,.07); border-radius:var(--radius-lg); padding:24px; display:flex; flex-direction:column; gap:14px; transition:transform 200ms ease, box-shadow 200ms ease; }
+    .platform-card:hover { transform:translateY(-3px); box-shadow:0 16px 40px rgba(0,0,0,.4); }
+    .platform-icon { width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center; }
+    .platform-card h3 { font-size:1rem; margin-bottom:4px; }
+    .platform-card p { font-size:0.84rem; color:var(--text-muted); line-height:1.6; }
+
+    /* ─── CTA FINAL ─── */
+    .cta-section { padding:100px 0; }
+    .cta-card {
+      background: linear-gradient(180deg, rgba(28,28,28,0.96), rgba(20,20,20,0.9));
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 16px; padding: 64px 48px;
+      max-width: 760px; margin: 0 auto;
+      position: relative; overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px rgba(108,99,255,0.1);
+      text-align:center;
+    }
+    .cta-card::before {
+      content: ""; position: absolute; inset: 0 0 auto; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      pointer-events: none;
+    }
+    .cta-card > * { position:relative; z-index:1; }
+    .cta-card h2 { margin-bottom:16px; }
+    .cta-card p { color:var(--text-muted); font-size:1.02rem; max-width:500px; margin:0 auto 36px; line-height:1.7; }
+    .cta-buttons { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+    @media(max-width:500px){ .cta-card { padding:44px 24px; } }
+
+    /* ─── FOOTER ─── */
+    .footer { padding:40px 0 28px; }
+    .footer-unified{display:grid;grid-template-columns:1.8fr 1fr 1.2fr;gap:36px;background:linear-gradient(180deg,rgba(28,28,28,.96),rgba(20,20,20,.9));border:1px solid var(--border);border-radius:12px;padding:32px 36px;}
+    @media(max-width:900px){.footer-unified{grid-template-columns:1fr 1fr;}}
+    @media(max-width:600px){.footer-unified{grid-template-columns:1fr;gap:22px;padding:22px 18px;}}
+    .footer-logo{font-size:1.1rem;font-weight:900;margin-bottom:10px;}
+    .footer-logo span{color:var(--primary);}
+    .footer-tagline{font-size:0.8rem;color:var(--text-muted);line-height:1.65;margin-bottom:14px;max-width:260px;}
+    .footer-legal{font-size:0.78rem;color:var(--text-muted);}
+    .footer-col-title{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:10px;}
+    .footer-links-col{display:flex;flex-direction:column;gap:8px;}
+    .footer-links-col a{font-size:0.82rem;color:var(--text-muted);text-decoration:none;transition:color .2s;}
+    .footer-links-col a:hover{color:var(--text);}
+
+    /* ─── SECTION-HEADER H2 UNDERLINE ─── */
+    .section-header h2 { position: relative; padding-bottom: 15px; margin-bottom: 16px; }
+    .section-header h2::after {
+      content: ""; position: absolute; left: 0; bottom: 0;
+      width: 76px; height: 4px; border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      box-shadow: 0 0 16px rgba(108,99,255,0.28);
+    }
+
+    /* ─── BRAND PILL ─── */
+    .brand-pill {
+      display: flex; align-items: center; gap: 9px;
+      padding: 10px 16px; border-radius: 8px;
+      background: linear-gradient(180deg, rgba(28,28,28,0.96), rgba(20,20,20,0.9));
+      border: 1px solid var(--border);
+      font-size: 0.82rem; font-weight: 700; color: var(--text-muted);
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .brand-pill:hover { border-color: rgba(108,99,255,0.5); color: var(--text); }
+
+    /* ─── WHATSAPP FAB ─── */
+    .whatsapp-fab {
+      position:fixed; bottom:28px; right:24px; z-index:990;
+      display:flex; align-items:center; gap:8px;
+      background:linear-gradient(135deg,#25D366,#128C7E);
+      color:#fff; font-weight:700; font-size:0.88rem;
+      padding:12px 20px; border-radius:100px;
+      box-shadow:0 4px 24px rgba(37,211,102,.4);
+      transition:transform 200ms ease, box-shadow 200ms ease, opacity 200ms ease;
+      opacity:0; pointer-events:none;
+    }
+    .whatsapp-fab.visible { opacity:1; pointer-events:auto; }
+    .whatsapp-fab:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(37,211,102,.55); }
+
+    /* â”€â”€â”€ FOCUS VISIBLE (Accesibilidad) â”€â”€â”€ */
+    :focus-visible {
+      outline: 2px solid rgba(108, 99, 255, 0.8);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid rgba(108, 99, 255, 0.8);
+      outline-offset: 3px;
+    }  </style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <header class="site-header" id="site-header">
+    <nav class="nav">
+      <a href="./index.html" class="nav-brand">NDR <span>Marketing</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="./index.html">Paid Media</a></li>
+        <li><a href="./diseño-web.html">Diseño Web</a></li>
+        <li><a href="./quienes-somos.html">Quiénes Somos</a></li>
+        <li><a href="./portafolio.html" class="active">Portafolio</a></li>
+        <li><a href="./precios-web.html">Precios Web</a></li>
+        <li><a href="./diseño-web.html#contacto-web">Contacto</a></li>
+      </ul>
+      <a href="./diseño-web.html#contacto-web" class="nav-cta">Cotizar proyecto</a>
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-label="Abrir menú">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ══════════ HERO ══════════ -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            Portafolio · NDR Marketing
+          </div>
+          <h1>Proyectos reales,<br><span class="gradient-text">resultados reales</span></h1>
+          <p class="lead">Cada proyecto tiene un objetivo claro de conversión. No hacemos páginas bonitas que no venden — construimos sitios que trabajan.</p>
+          <div class="stats-row reveal">
+            <div class="stat-item">
+              <span class="stat-number">6+</span>
+              <span class="stat-label">Proyectos en portafolio activo</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">20+</span>
+              <span class="stat-label">Tiendas activas gestionadas</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">5+</span>
+              <span class="stat-label">Años de experiencia</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number accent-green">$191M+</span>
+              <span class="stat-label">CLP en ventas atribuidas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ PORTFOLIO GRID ══════════ -->
+    <section class="portfolio-section section-dark">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="kicker"><span class="kicker-dot"></span>Trabajos seleccionados</span>
+          <h2>Lo que hemos construido</h2>
+          <p class="section-copy">Sitios reales para negocios reales. Cada uno con estrategia de conversión desde el primer día.</p>
+        </div>
+        <div class="portfolio-grid" id="portfolio-grid">
+
+          <!-- Trenda.cl -->
+          <div class="portfolio-card reveal-scale">
+            <div class="portfolio-thumb">
+              <div class="browser-bar">
+                <div class="browser-dots"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
+                <div class="browser-url">trenda.cl</div>
+                <span class="portfolio-type-badge" style="position:static;margin-left:6px;">Shopify</span>
+              </div>
+              <div class="browser-screen">
+                <div class="browser-placeholder" style="background:linear-gradient(135deg,rgba(108,99,255,.14),rgba(60,50,180,.08))">
+                  <svg viewBox="0 0 48 48" width="40" height="40" fill="none"><rect x="4" y="4" width="40" height="40" rx="8" fill="rgba(108,99,255,.18)" stroke="rgba(108,99,255,.45)" stroke-width="1.5"/><path d="M16 22V18a8 8 0 0 1 16 0v4" stroke="#8b84ff" stroke-width="2.5" stroke-linecap="round"/><rect x="12" y="22" width="24" height="16" rx="4" fill="none" stroke="#8b84ff" stroke-width="2.5"/><circle cx="24" cy="30" r="2.5" fill="#8b84ff"/></svg>
+                </div>
+                <img class="screenshot" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Ftrenda.cl%2F?w=800&h=450" alt="Trenda.cl" loading="lazy" onload="this.classList.add('loaded')">
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <h3>Trenda.cl</h3>
+              <p>Tienda de moda en Shopify con tema personalizado, pasarela de pago integrada y catálogo optimizado para mobile. Diseño enfocado en conversión desde el primer producto.</p>
+              <div class="portfolio-tags">
+                <span class="tag tag-purple">Shopify</span>
+                <span class="tag">Tema custom</span>
+                <span class="tag">Mobile first</span>
+              </div>
+              <a class="portfolio-link" href="https://www.trenda.cl" target="_blank" rel="noopener noreferrer">Ver sitio →</a>
+            </div>
+          </div>
+
+          <!-- Karla Mallol Boutique -->
+          <div class="portfolio-card reveal-scale">
+            <div class="portfolio-thumb">
+              <div class="browser-bar">
+                <div class="browser-dots"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
+                <div class="browser-url">karlamallolboutique.cl</div>
+                <span class="portfolio-type-badge" style="position:static;margin-left:6px;">Tiendanube</span>
+              </div>
+              <div class="browser-screen">
+                <div class="browser-placeholder" style="background:linear-gradient(135deg,rgba(255,159,67,.12),rgba(180,100,30,.07))">
+                  <svg viewBox="0 0 48 48" width="40" height="40" fill="none"><rect x="4" y="4" width="40" height="40" rx="8" fill="rgba(255,159,67,.18)" stroke="rgba(255,159,67,.45)" stroke-width="1.5"/><path d="M12 32l6-8 5 6 4-5 9 7" stroke="#ff9f43" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="18" cy="18" r="4" fill="none" stroke="#ff9f43" stroke-width="2"/></svg>
+                </div>
+                <img class="screenshot" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fkarlamallolboutique.cl%2F?w=800&h=450" alt="Karla Mallol Boutique" loading="lazy" onload="this.classList.add('loaded')">
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <h3>Karla Mallol Boutique</h3>
+              <p>Boutique online con identidad visual de lujo, catálogo de productos y checkout optimizado. Diseño premium alineado con la marca personal de la fundadora.</p>
+              <div class="portfolio-tags">
+                <span class="tag tag-green">Tiendanube</span>
+                <span class="tag tag-orange">Diseño premium</span>
+                <span class="tag tag-orange">Branding</span>
+              </div>
+              <a class="portfolio-link" href="https://www.karlamallolboutique.cl" target="_blank" rel="noopener noreferrer">Ver sitio →</a>
+            </div>
+          </div>
+
+          <!-- Fenia Oficial -->
+          <div class="portfolio-card reveal-scale">
+            <div class="portfolio-thumb">
+              <div class="browser-bar">
+                <div class="browser-dots"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
+                <div class="browser-url">feniaoficial.com</div>
+                <span class="portfolio-type-badge" style="position:static;margin-left:6px;">Tiendanube</span>
+              </div>
+              <div class="browser-screen">
+                <div class="browser-placeholder" style="background:linear-gradient(135deg,rgba(0,229,160,.12),rgba(0,160,100,.07))">
+                  <svg viewBox="0 0 48 48" width="40" height="40" fill="none"><rect x="4" y="4" width="40" height="40" rx="8" fill="rgba(0,229,160,.16)" stroke="rgba(0,229,160,.45)" stroke-width="1.5"/><path d="M16 22V18a8 8 0 0 1 16 0v4" stroke="#00e5a0" stroke-width="2.5" stroke-linecap="round"/><rect x="12" y="22" width="24" height="16" rx="4" fill="none" stroke="#00e5a0" stroke-width="2.5"/><circle cx="24" cy="30" r="2.5" fill="#00e5a0"/></svg>
+                </div>
+                <img class="screenshot" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.feniaoficial.com%2F?w=800&h=450" alt="Fenia Oficial" loading="lazy" onload="this.classList.add('loaded')">
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <h3>Fenia Oficial</h3>
+              <p>Tienda de moda en Tiendanube con diseño a medida, integración de Webpay y Mercado Pago, y catálogo completo optimizado para mobile y conversión.</p>
+              <div class="portfolio-tags">
+                <span class="tag tag-green">Tiendanube</span>
+                <span class="tag tag-green">Webpay</span>
+                <span class="tag tag-green">Mercado Pago</span>
+              </div>
+              <a class="portfolio-link" href="https://www.feniaoficial.com" target="_blank" rel="noopener noreferrer">Ver sitio →</a>
+            </div>
+          </div>
+
+          <!-- Fitness Saludable -->
+          <div class="portfolio-card reveal-scale">
+            <div class="portfolio-thumb">
+              <div class="browser-bar">
+                <div class="browser-dots"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
+                <div class="browser-url">fitnesssaludable.cl</div>
+                <span class="portfolio-type-badge" style="position:static;margin-left:6px;">WordPress</span>
+              </div>
+              <div class="browser-screen">
+                <div class="browser-placeholder" style="background:linear-gradient(135deg,rgba(0,229,160,.16),rgba(0,180,100,.08))">
+                  <svg viewBox="0 0 48 48" width="40" height="40" fill="none"><rect x="4" y="4" width="40" height="40" rx="8" fill="rgba(0,229,160,.18)" stroke="rgba(0,229,160,.5)" stroke-width="1.5"/><path d="M8 24h6l4-10 6 20 4-14 4 4h8" stroke="#00e5a0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                </div>
+                <img class="screenshot" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.fitnesssaludable.cl%2F?w=800&h=450" alt="Fitness Saludable" loading="lazy" onload="this.classList.add('loaded')">
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <h3>Fitness Saludable</h3>
+              <p>Sitio de salud y fitness en WordPress con landing de captación de leads, formulario de contacto optimizado y blog con SEO on-page configurado para posicionamiento orgánico.</p>
+              <div class="portfolio-tags">
+                <span class="tag">WordPress</span>
+                <span class="tag tag-green">SEO</span>
+                <span class="tag">Lead gen</span>
+              </div>
+              <a class="portfolio-link" href="https://www.fitnesssaludable.cl" target="_blank" rel="noopener noreferrer">Ver sitio →</a>
+            </div>
+          </div>
+
+          <!-- Vaypol -->
+          <div class="portfolio-card reveal-scale">
+            <div class="portfolio-thumb">
+              <div class="browser-bar">
+                <div class="browser-dots"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
+                <div class="browser-url">vaypol.com</div>
+                <span class="portfolio-type-badge" style="position:static;margin-left:6px;">Shopify</span>
+              </div>
+              <div class="browser-screen">
+                <div class="browser-placeholder" style="background:linear-gradient(135deg,rgba(150,191,72,.18),rgba(94,142,62,.1))">
+                  <svg viewBox="0 0 48 48" width="40" height="40" fill="none"><rect x="4" y="4" width="40" height="40" rx="8" fill="rgba(150,191,72,.22)" stroke="rgba(150,191,72,.5)" stroke-width="1.5"/><path d="M16 22V18a8 8 0 0 1 16 0v4" stroke="#96BF48" stroke-width="2.5" stroke-linecap="round"/><rect x="12" y="22" width="24" height="16" rx="4" fill="none" stroke="#96BF48" stroke-width="2.5"/><circle cx="24" cy="30" r="2.5" fill="#96BF48"/></svg>
+                </div>
+                <img class="screenshot" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.vaypol.com%2F?w=800&h=450" alt="Vaypol" loading="lazy" onload="this.classList.add('loaded')">
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <h3>Vaypol</h3>
+              <p>Gran ecommerce deportivo en Shopify con catálogo masivo, integraciones de pago regionales y tracking completo para Meta Ads y Google Ads desde el día 1.</p>
+              <div class="project-highlight">
+                <svg viewBox="0 0 16 16" width="13" height="13" fill="none"><path d="M8 1l1.8 3.6L14 5.5l-3 2.9.7 4.1L8 10.4l-3.7 2.1.7-4.1-3-2.9 4.2-.9L8 1z" fill="#00e5a0"/></svg>
+                $191M+ CLP en ventas atribuidas
+              </div>
+              <div class="portfolio-tags">
+                <span class="tag tag-purple">Shopify</span>
+                <span class="tag">Ecommerce</span>
+                <span class="tag">Tracking</span>
+              </div>
+              <a class="portfolio-link" href="https://www.vaypol.com" target="_blank" rel="noopener noreferrer">Ver sitio →</a>
+            </div>
+          </div>
+
+          <!-- NBA Store Chile -->
+          <div class="portfolio-card reveal-scale">
+            <div class="portfolio-thumb">
+              <div class="browser-bar">
+                <div class="browser-dots"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
+                <div class="browser-url">tiendanba.cl</div>
+                <span class="portfolio-type-badge" style="position:static;margin-left:6px;">Shopify · Liquid</span>
+              </div>
+              <div class="browser-screen">
+                <div class="browser-placeholder" style="background:linear-gradient(135deg,rgba(200,16,46,.18),rgba(23,64,139,.14))">
+                  <svg viewBox="0 0 48 48" width="40" height="40" fill="none"><rect x="4" y="4" width="40" height="40" rx="8" fill="rgba(200,16,46,.18)" stroke="rgba(200,16,46,.45)" stroke-width="1.5"/><circle cx="24" cy="24" r="13" fill="none" stroke="#C8102E" stroke-width="2.2"/><path d="M24 11v26M11 24h26" stroke="#C8102E" stroke-width="1.6" stroke-linecap="round"/><path d="M16 14c3 4 3 12 0 20M32 14c-3 4-3 12 0 20" stroke="white" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg>
+                </div>
+                <img class="screenshot" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Ftiendanba.cl%2F?w=800&h=450" alt="NBA Store Chile" loading="lazy" onload="this.classList.add('loaded')">
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <h3>NBA Store Chile · tiendanba.cl</h3>
+              <p>Desarrollo de código Liquid personalizado para mejorar la tasa de conversión de la tienda oficial NBA en Chile. Implementación de seguimiento de pedidos y mejoras de diseño a medida.</p>
+              <div class="project-badge-special">
+                <svg viewBox="0 0 16 16" width="11" height="11" fill="none"><path d="M8 1l1.8 3.6L14 5.5l-3 2.9.7 4.1L8 10.4l-3.7 2.1.7-4.1-3-2.9 4.2-.9L8 1z" fill="#ff6b7a"/></svg>
+                Tienda oficial NBA
+              </div>
+              <div class="portfolio-tags">
+                <span class="tag tag-purple">Shopify</span>
+                <span class="tag">Liquid</span>
+                <span class="tag">CRO</span>
+              </div>
+              <a class="portfolio-link" href="https://www.tiendanba.cl" target="_blank" rel="noopener noreferrer">Ver sitio →</a>
+            </div>
+          </div>
+
+          <!-- CTA card -->
+          <div class="portfolio-card portfolio-card-cta reveal-scale">
+            <div class="cta-thumb">
+              <svg viewBox="0 0 48 48" width="44" height="44" fill="none"><circle cx="24" cy="24" r="18" stroke="rgba(108,99,255,.4)" stroke-width="2" stroke-dasharray="4 3"/><path d="M24 16v16M16 24h16" stroke="#8b84ff" stroke-width="2.5" stroke-linecap="round"/></svg>
+              <span>Tu proyecto aquí</span>
+            </div>
+            <div class="portfolio-body">
+              <h3>¿El siguiente eres tú?</h3>
+              <p>Escríbeme y te muestro más trabajos similares al tuyo. La consulta es gratis.</p>
+              <a class="portfolio-link" href="./diseño-web.html#contacto-web">Cotizar ahora →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ PLATAFORMAS ══════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="kicker"><span class="kicker-dot"></span>Plataformas</span>
+          <h2>Trabajamos en las mejores plataformas</h2>
+          <p class="section-copy">Cada plataforma tiene su razón de ser. Elegimos la correcta según el objetivo de negocio, el presupuesto y el mercado objetivo.</p>
+        </div>
+        <div class="platforms-grid">
+
+          <div class="platform-card reveal-scale">
+            <div class="platform-icon" style="background:rgba(33,117,155,.14);border:1px solid rgba(33,117,155,.22);">
+              <img src="./logo_wordpress.png" alt="WordPress" width="30" height="30" style="object-fit:contain;" onerror="this.replaceWith((() => { const s=document.createElementNS('http://www.w3.org/2000/svg','svg'); s.setAttribute('viewBox','0 0 24 24'); s.setAttribute('width','28'); s.setAttribute('height','28'); s.innerHTML='<circle cx=\'12\' cy=\'12\' r=\'10\' fill=\'none\' stroke=\'#21759b\' stroke-width=\'2\'/><path d=\'M3 12h18M12 3v18\' stroke=\'#21759b\' stroke-width=\'1.5\'/>'; return s; })())">
+            </div>
+            <div>
+              <h3>WordPress</h3>
+              <p>Sitios de contenido, blogs con SEO, landings de captación de leads y portales corporativos. Ideal para posicionamiento orgánico.</p>
+            </div>
+            <div class="portfolio-tags">
+              <span class="tag">SEO</span>
+              <span class="tag">Blogs</span>
+              <span class="tag">Landings</span>
+            </div>
+          </div>
+
+          <div class="platform-card reveal-scale">
+            <div class="platform-icon" style="background:rgba(150,191,72,.12);border:1px solid rgba(150,191,72,.22);">
+              <img src="./logo_shopify.png" alt="Shopify" width="30" height="30" style="object-fit:contain;" onerror="this.replaceWith((() => { const s=document.createElementNS('http://www.w3.org/2000/svg','svg'); s.setAttribute('viewBox','0 0 24 24'); s.setAttribute('width','28'); s.setAttribute('height','28'); s.innerHTML='<path d=\'M20 8c-.1-.5-.5-.8-1-.9l-2.6-.3-1.7-4.3c-.1-.3-.4-.5-.7-.5s-.6.2-.7.5l-1.7 4.3-2.6.3c-.5.1-.9.4-1 .9-.1.5.1 1 .5 1.3l2 1.7-.6 2.7c-.1.5.1 1 .5 1.3.4.3 1 .3 1.4 0l2.3-1.4 2.3 1.4c.2.1.5.2.7.2.2 0 .5-.1.7-.2.4-.3.6-.8.5-1.3l-.6-2.7 2-1.7c.4-.3.6-.8.5-1.3z\' fill=\'#96BF48\'/>'; return s; })())">
+            </div>
+            <div>
+              <h3>Shopify</h3>
+              <p>Tiendas online de alto rendimiento con catálogos masivos, integraciones de pago y tracking de conversiones perfecto para campañas de paid media.</p>
+            </div>
+            <div class="portfolio-tags">
+              <span class="tag tag-purple">Ecommerce</span>
+              <span class="tag">Liquid</span>
+              <span class="tag">Tracking</span>
+            </div>
+          </div>
+
+          <div class="platform-card reveal-scale">
+            <div class="platform-icon" style="background:rgba(0,193,104,.1);border:1px solid rgba(0,193,104,.2);">
+              <img src="./logo_tiendanube.png" alt="Tiendanube" width="30" height="30" style="object-fit:contain;" onerror="this.replaceWith((() => { const s=document.createElementNS('http://www.w3.org/2000/svg','svg'); s.setAttribute('viewBox','0 0 24 24'); s.setAttribute('width','28'); s.setAttribute('height','28'); s.innerHTML='<path d=\'M6 19a4 4 0 0 1 0-8 4.5 4.5 0 0 1 8.7-1.5A3.5 3.5 0 1 1 17.5 17H6z\' fill=\'none\' stroke=\'#00c168\' stroke-width=\'1.8\'/>'; return s; })())">
+            </div>
+            <div>
+              <h3>Tiendanube</h3>
+              <p>La plataforma más usada para ecommerce en Chile y LATAM. Webpay, Mercado Pago, diseño a medida y enfoque en el mercado local.</p>
+            </div>
+            <div class="portfolio-tags">
+              <span class="tag tag-green">Chile</span>
+              <span class="tag tag-green">Webpay</span>
+              <span class="tag tag-green">LATAM</span>
+            </div>
+          </div>
+
+          <div class="platform-card reveal-scale">
+            <div class="platform-icon" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none"><path d="M12 3L22 20H2L12 3z" fill="white" opacity=".85"/></svg>
+            </div>
+            <div>
+              <h3>Vercel / Next.js</h3>
+              <p>Para negocios que invierten en ads y necesitan velocidad máxima. Core Web Vitals perfectos, mejor Quality Score y mayor ROAS desde el primer día.</p>
+            </div>
+            <div class="portfolio-tags">
+              <span class="tag">Performance</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">Core Web Vitals</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ CTA FINAL ══════════ -->
+    <section class="cta-section section-violet">
+      <div class="container">
+        <div class="cta-card reveal-scale">
+          <span class="kicker" style="justify-content:center;margin-bottom:20px;"><span class="kicker-dot"></span>¿Trabajamos juntos?</span>
+          <h2>¿Tu negocio debería estar aquí?</h2>
+          <p>La consulta inicial es gratis. Cuéntame tu proyecto y en 24 horas te respondo con una propuesta concreta.</p>
+          <div class="cta-buttons">
+            <a href="https://wa.me/56926879731?text=Hola%20Nicol%C3%A1s%2C%20vi%20tu%20portafolio%20y%20me%20interesa%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer" class="btn btn-wa btn-lg">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.118 1.532 5.845L.057 23.882l6.198-1.625A11.93 11.93 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 0 1-5.031-1.388l-.36-.214-3.733.979 1-3.638-.235-.374A9.799 9.799 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+              WhatsApp
+            </a>
+            <a href="./diseño-web.html#contacto-web" class="btn btn-primary btn-lg">Cotizar proyecto →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-unified">
+        <div>
+          <div class="footer-logo"><span>NDR</span> Marketing</div>
+          <p class="footer-tagline">Paid Media + Diseño Web para ecommerce, servicios y profesionales en Chile. Trato directo, sin intermediarios.</p>
+          <p class="footer-legal">NDR Marketing SpA · © <span id="current-year">2026</span> Todos los derechos reservados.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Páginas</div>
+          <div class="footer-links-col">
+            <a href="./index.html">Paid Media</a>
+            <a href="./diseño-web.html">Diseño Web</a>
+            <a href="./quienes-somos.html">Quiénes Somos</a>
+            <a href="./portafolio.html">Portafolio</a>
+            <a href="./precios-web.html">Precios Web</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Contacto</div>
+          <div class="footer-links-col">
+            <a href="https://www.instagram.com/nicolaseganar/" target="_blank" rel="noopener noreferrer">Instagram @nicolaseganar</a>
+            <a href="https://cl.linkedin.com/in/nicolas-ega%C3%B1a-4b96632a4" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://wa.me/56926879731" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          </div>
+          <div class="footer-col-title" style="margin-top:18px;">Legal</div>
+          <div class="footer-links-col">
+            <a href="./politica-privacidad.html">Política de privacidad</a>
+            <a href="./terminos-servicio.html">Términos de servicio</a>
+            <a href="./politica-cookies.html">Política de cookies</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-fab" id="whatsapp-fab" href="https://wa.me/56926879731?text=Hola%20Nicol%C3%A1s%2C%20vi%20tu%20portafolio%20y%20me%20interesa%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.118 1.532 5.845L.057 23.882l6.198-1.625A11.93 11.93 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 0 1-5.031-1.388l-.36-.214-3.733.979 1-3.638-.235-.374A9.799 9.799 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+    WhatsApp
+  </a>
+
+  <script>
+    // Header scroll + progress bar
+    const header = document.getElementById("site-header");
+    const progress = document.getElementById("scroll-progress");
+    const whatsappFab = document.getElementById("whatsapp-fab");
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("scrolled", window.scrollY > 24);
+      const sh = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = sh > 0 ? `${(window.scrollY / sh) * 100}%` : "0%";
+      whatsappFab.classList.toggle("visible", window.scrollY > 400);
+    }, { passive: true });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+    menuToggle.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", open);
+    });
+    navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }));
+
+    // IntersectionObserver reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-visible");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -36px 0px" });
+    document.querySelectorAll(".reveal, .reveal-scale, .reveal-left, .reveal-right").forEach(el => io.observe(el));
+    // Animate hero elements immediately
+    document.querySelectorAll(".hero .reveal, .hero .reveal-scale, .hero .reveal-right, .hero .reveal-left").forEach(el => el.classList.add("is-visible"));
+
+    // Footer year
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
+
+  <!-- ══════════ UX ENHANCEMENTS ══════════ -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+  <div id="scroll-bar" aria-hidden="true"></div>
+  <style>
+    #cursor-glow { position:fixed; pointer-events:none; z-index:0; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(108,99,255,.055) 0%,transparent 65%); transform:translate(-50%,-50%); transition:opacity 700ms ease; top:0; left:0; opacity:0; }
+    #particle-canvas { position:fixed; inset:0; z-index:0; pointer-events:none; }
+    #scroll-bar { position:fixed; top:0; left:0; z-index:9999; height:2px; width:0%; background:linear-gradient(90deg,#6c63ff,#00e5a0); transition:width 60ms linear; }
+
+    /* â”€â”€â”€ FOCUS VISIBLE (Accesibilidad) â”€â”€â”€ */
+    :focus-visible {
+      outline: 2px solid rgba(108, 99, 255, 0.8);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid rgba(108, 99, 255, 0.8);
+      outline-offset: 3px;
+    }  </style>
+  <script>
+  (function(){
+    const noMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const bar=document.getElementById('scroll-bar');
+    window.addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';},{passive:true});
+    const glow=document.getElementById('cursor-glow');
+    const isFine=window.matchMedia('(pointer:fine)').matches;
+    if(isFine&&glow){let cx=0,cy=0,tx=0,ty=0,on=false;document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;if(!on){glow.style.opacity='1';on=true;}});document.addEventListener('mouseleave',()=>{glow.style.opacity='0';on=false;});const lerp=(a,b,t)=>a+(b-a)*t;if(!noMotion){const t=()=>{cx=lerp(cx,tx,.07);cy=lerp(cy,ty,.07);glow.style.left=cx+'px';glow.style.top=cy+'px';requestAnimationFrame(t);};t();}}
+    if(isFine&&!noMotion){document.querySelectorAll('.btn-primary,.btn,.nav-cta').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.22}px,${(e.clientY-r.top-r.height/2)*.22}px) translateY(-1px)`;});b.addEventListener('mouseleave',()=>{b.style.transform='';});});}
+    if(noMotion)return;
+    const canvas=document.getElementById('particle-canvas');if(!canvas)return;
+    const ctx=canvas.getContext('2d');let W,H;
+    const resize=()=>{W=canvas.width=innerWidth;H=canvas.height=innerHeight;};resize();window.addEventListener('resize',resize,{passive:true});
+    const N=innerWidth<768?30:60;
+    const pts=Array.from({length:N},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,r:Math.random()*1.1+.35,v:Math.random()>.45}));
+    let mx=-9999,my=-9999;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
+    const CONN=105,MOUSE=120;
+    const draw=()=>{ctx.clearRect(0,0,W,H);for(let i=0;i<N;i++){const p=pts[i];const dx=p.x-mx,dy=p.y-my,d=Math.hypot(dx,dy);if(d<MOUSE){const f=(MOUSE-d)/MOUSE*.055;p.vx+=(dx/d)*f;p.vy+=(dy/d)*f;}p.vx*=.984;p.vy*=.984;p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.v?'rgba(108,99,255,.5)':'rgba(0,229,160,.45)';ctx.fill();for(let j=i+1;j<N;j++){const q=pts[j],ed=Math.hypot(p.x-q.x,p.y-q.y);if(ed<CONN){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=`rgba(108,99,255,${(1-ed/CONN)*.1})`;ctx.lineWidth=.55;ctx.stroke();}}}requestAnimationFrame(draw);};
+    draw();
+  })();
+  </script>
+
+  <!-- ── Portfolio dinámico (seed data + Supabase) ── -->
+  <script>
+  (function(){
+    const SEED=[
+      {id:1,name:"Trenda.cl",domain:"trenda.cl",description:"Tienda de moda en Shopify con tema personalizado, pasarela de pago integrada y catálogo optimizado para mobile. Diseño enfocado en conversión desde el primer producto.",description_short:"Tienda de moda en Shopify con tema personalizado, pasarela de pago y catálogo optimizado para mobile.",platform:"Shopify",live_url:"https://www.trenda.cl",tags:[{text:"Shopify",color:"purple"},{text:"Tema custom",color:""},{text:"Mobile first",color:""}],highlight:"",badge:"",gradient:"linear-gradient(135deg,rgba(108,99,255,.14),rgba(60,50,180,.08))",sort_order:1,active:true},
+      {id:2,name:"Karla Mallol Boutique",domain:"karlamallolboutique.cl",description:"Boutique online con identidad visual de lujo, catálogo de productos y checkout optimizado. Diseño premium alineado con la marca personal de la fundadora.",description_short:"Boutique online con identidad visual de lujo y checkout optimizado para conversión.",platform:"Tiendanube",live_url:"https://www.karlamallolboutique.cl",tags:[{text:"Tiendanube",color:"green"},{text:"Diseño premium",color:"orange"},{text:"Branding",color:"orange"}],highlight:"",badge:"",gradient:"linear-gradient(135deg,rgba(255,159,67,.12),rgba(180,100,30,.07))",sort_order:2,active:true},
+      {id:3,name:"Fenia Oficial",domain:"feniaoficial.com",description:"Tienda de moda en Tiendanube con diseño a medida, integración de Webpay y Mercado Pago, y catálogo completo optimizado para mobile y conversión.",description_short:"Tienda de moda en Tiendanube con diseño a medida y pagos integrados.",platform:"Tiendanube",live_url:"https://www.feniaoficial.com",tags:[{text:"Tiendanube",color:"green"},{text:"Webpay",color:"green"},{text:"Mercado Pago",color:"green"}],highlight:"",badge:"",gradient:"linear-gradient(135deg,rgba(0,229,160,.12),rgba(0,160,100,.07))",sort_order:3,active:true},
+      {id:4,name:"Fitness Saludable",domain:"fitnesssaludable.cl",description:"Sitio de salud y fitness en WordPress con landing de captación de leads, formulario de contacto optimizado y blog con SEO on-page configurado para posicionamiento orgánico.",description_short:"Sitio en WordPress con landing de captación de leads y SEO on-page.",platform:"WordPress",live_url:"https://www.fitnesssaludable.cl",tags:[{text:"WordPress",color:""},{text:"SEO",color:"green"},{text:"Lead gen",color:""}],highlight:"",badge:"",gradient:"linear-gradient(135deg,rgba(0,229,160,.16),rgba(0,180,100,.08))",sort_order:4,active:true},
+      {id:5,name:"Vaypol",domain:"vaypol.com",description:"Gran ecommerce deportivo en Shopify con catálogo masivo, integraciones de pago regionales y tracking completo para Meta Ads y Google Ads desde el día 1.",description_short:"Gran ecommerce deportivo en Shopify con tracking completo para ads.",platform:"Shopify",live_url:"https://www.vaypol.com",tags:[{text:"Shopify",color:"purple"},{text:"Ecommerce",color:""},{text:"Tracking",color:""}],highlight:"$191M+ CLP en ventas atribuidas",badge:"",gradient:"linear-gradient(135deg,rgba(150,191,72,.18),rgba(94,142,62,.1))",sort_order:5,active:true},
+      {id:6,name:"NBA Store Chile",domain:"tiendanba.cl",description:"Desarrollo de código Liquid personalizado para mejorar la tasa de conversión de la tienda oficial NBA en Chile. Implementación de seguimiento de pedidos y mejoras de diseño a medida.",description_short:"Desarrollo Liquid personalizado para la tienda oficial NBA en Chile.",platform:"Shopify · Liquid",live_url:"https://www.tiendanba.cl",tags:[{text:"Shopify",color:"purple"},{text:"Liquid",color:""},{text:"CRO",color:""}],highlight:"",badge:"Tienda oficial NBA",gradient:"linear-gradient(135deg,rgba(200,16,46,.18),rgba(23,64,139,.14))",sort_order:6,active:true}
+    ];
+
+    const CTA_HTML='<div class="portfolio-card portfolio-card-cta reveal-scale"><div class="cta-thumb"><svg viewBox="0 0 48 48" width="44" height="44" fill="none"><circle cx="24" cy="24" r="18" stroke="rgba(108,99,255,.4)" stroke-width="2" stroke-dasharray="4 3"/><path d="M24 16v16M16 24h16" stroke="#8b84ff" stroke-width="2.5" stroke-linecap="round"/></svg><span>Tu proyecto aquí</span></div><div class="portfolio-body"><h3>¿El siguiente eres tú?</h3><p>Escríbeme y te muestro más trabajos similares al tuyo. La consulta es gratis.</p><a class="portfolio-link" href="./diseño-web.html#contacto-web">Cotizar ahora →</a></div></div>';
+
+    function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+    function renderCard(p){
+      const tags=Array.isArray(p.tags)?p.tags:(()=>{try{return JSON.parse(p.tags||'[]');}catch{return [];}})();
+      const tagsHtml=tags.map(t=>{const c=t.color||'';const tx=t.text||t;return '<span class="tag'+(c?' tag-'+c:'')+'">'+esc(tx)+'</span>';}).join('');
+      return '<div class="portfolio-card reveal-scale"><div class="portfolio-thumb"><div class="browser-bar"><div class="browser-dots"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div><div class="browser-url">'+esc(p.domain)+'</div><span class="portfolio-type-badge" style="position:static;margin-left:6px;">'+esc(p.platform)+'</span></div><div class="browser-screen"><div class="browser-placeholder" style="background:'+esc(p.gradient)+'"><svg viewBox="0 0 48 48" width="40" height="40" fill="none"><rect x="4" y="4" width="40" height="40" rx="8" fill="rgba(108,99,255,.12)" stroke="rgba(108,99,255,.3)" stroke-width="1.5"/><path d="M16 22V18a8 8 0 0 1 16 0v4" stroke="#8b84ff" stroke-width="2.5" stroke-linecap="round"/><rect x="12" y="22" width="24" height="16" rx="4" fill="none" stroke="#8b84ff" stroke-width="2.5"/><circle cx="24" cy="30" r="2.5" fill="#8b84ff"/></svg></div><img class="screenshot" src="https://s.wordpress.com/mshots/v1/'+encodeURIComponent(p.live_url)+'?w=800&h=450" alt="'+esc(p.name)+'" loading="lazy" onload="this.classList.add(\'loaded\')"></div></div><div class="portfolio-body"><h3>'+esc(p.name)+'</h3><p>'+esc(p.description)+'</p>'+(p.highlight?'<div class="project-highlight"><svg viewBox="0 0 16 16" width="13" height="13" fill="none"><path d="M8 1l1.8 3.6L14 5.5l-3 2.9.7 4.1L8 10.4l-3.7 2.1.7-4.1-3-2.9 4.2-.9L8 1z" fill="#00e5a0"/></svg>'+esc(p.highlight)+'</div>':'')+(p.badge?'<div class="project-badge-special"><svg viewBox="0 0 16 16" width="11" height="11" fill="none"><path d="M8 1l1.8 3.6L14 5.5l-3 2.9.7 4.1L8 10.4l-3.7 2.1.7-4.1-3-2.9 4.2-.9L8 1z" fill="#ff6b7a"/></svg>'+esc(p.badge)+'</div>':'')+'<div class="portfolio-tags">'+tagsHtml+'</div><a class="portfolio-link" href="'+esc(p.live_url)+'" target="_blank" rel="noopener noreferrer">Ver sitio →</a></div></div>';
+    }
+
+    function renderGrid(projects){
+      const grid=document.getElementById('portfolio-grid');
+      if(!grid)return;
+      const active=projects.filter(p=>p.active!==false);
+      active.sort((a,b)=>(a.sort_order||99)-(b.sort_order||99));
+      grid.innerHTML=active.map(renderCard).join('')+CTA_HTML;
+      // Re-trigger reveal animations con la clase correcta del sistema
+      requestAnimationFrame(()=>{
+        grid.querySelectorAll('.reveal-scale').forEach(el=>{
+          const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');obs.unobserve(e.target);}});},{threshold:.08});
+          obs.observe(el);
+        });
+      });
+    }
+
+    async function loadProjects(){
+      try{
+        const cfg=JSON.parse(localStorage.getItem('ndr_admin_config')||'{}');
+        if(cfg.url&&cfg.key){
+          const res=await fetch(cfg.url+'/rest/v1/portfolio_projects?select=*&order=sort_order.asc',{headers:{apikey:cfg.key,Authorization:'Bearer '+cfg.key}});
+          if(res.ok){const data=await res.json();if(data&&data.length>0){renderGrid(data);return;}}
+        }
+      }catch(e){}
+      renderGrid(SEED);
+    }
+
+    if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',loadProjects);}
+    else{loadProjects();}
+  })();
+  </script>
+
+</body>
+</html>

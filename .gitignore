@@ -1,0 +1,13 @@
+# Archivos de sistema y OS
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Scripts temporales
+fix_ndr.ps1
+
+# Archivos de antigravity
+.antigravity/
+
+# Git config del repo padre (no incluir)

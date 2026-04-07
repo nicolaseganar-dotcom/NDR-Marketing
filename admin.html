@@ -1,0 +1,1139 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NDR Marketing · Panel de Administración</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0d; --surface: #1a1a1a; --surface2: #222;
+      --border: #2a2a2a; --text: #f5f5f5; --muted: #9ca3af;
+      --primary: #6c63ff; --secondary: #00e5a0; --danger: #ff4444;
+      --success: #00e5a0; --warning: #ff9f43;
+      --radius: 10px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* ── LOGIN ── */
+    #login-screen {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh; padding: 24px;
+    }
+    .login-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 40px; width: 100%; max-width: 380px;
+      text-align: center;
+    }
+    .login-logo { font-size: 1.6rem; font-weight: 900; margin-bottom: 8px; }
+    .login-logo span { color: var(--primary); }
+    .login-sub { color: var(--muted); font-size: 0.88rem; margin-bottom: 32px; }
+    .login-card input[type="password"] {
+      width: 100%; padding: 12px 16px; background: var(--bg);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      color: var(--text); font-size: 1rem; font-family: inherit;
+      margin-bottom: 12px; outline: none;
+      transition: border-color 0.2s;
+    }
+    .login-card input[type="password"]:focus { border-color: var(--primary); }
+    .login-error { color: var(--danger); font-size: 0.82rem; margin-bottom: 10px; min-height: 18px; }
+
+    /* ── LAYOUT ADMIN ── */
+    #admin-screen { display: none; }
+    .admin-header {
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      padding: 0 28px; height: 60px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 100;
+    }
+    .admin-logo { font-weight: 900; font-size: 1rem; }
+    .admin-logo span { color: var(--primary); }
+    .admin-badge { background: var(--primary); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 20px; margin-left: 8px; }
+    .admin-logout { background: none; border: 1px solid var(--border); color: var(--muted); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.82rem; font-family: inherit; transition: all 0.2s; }
+    .admin-logout:hover { border-color: var(--danger); color: var(--danger); }
+
+    .admin-body { display: flex; min-height: calc(100vh - 60px); }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: 220px; background: var(--surface); border-right: 1px solid var(--border);
+      padding: 20px 0; flex-shrink: 0; position: sticky; top: 60px;
+      height: calc(100vh - 60px); overflow-y: auto;
+    }
+    .sidebar-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 20px; cursor: pointer; font-size: 0.88rem;
+      color: var(--muted); transition: all 0.15s; border-left: 2px solid transparent;
+    }
+    .sidebar-item:hover { color: var(--text); background: rgba(255,255,255,0.03); }
+    .sidebar-item.active { color: var(--primary); border-left-color: var(--primary); background: rgba(108,99,255,0.08); }
+    .sidebar-icon { font-size: 1rem; width: 18px; text-align: center; }
+
+    /* ── MAIN ── */
+    .admin-main { flex: 1; padding: 32px; max-width: 800px; }
+
+    .section { display: none; }
+    .section.active { display: block; }
+
+    .section-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
+    .section-desc { color: var(--muted); font-size: 0.88rem; margin-bottom: 28px; }
+
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px; margin-bottom: 20px;
+    }
+    .card-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; color: var(--text); }
+
+    .field { margin-bottom: 16px; }
+    .field label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+    .field input, .field textarea, .field select {
+      width: 100%; padding: 10px 14px; background: var(--bg);
+      border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text); font-size: 0.92rem; font-family: inherit;
+      outline: none; transition: border-color 0.2s;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--primary); }
+    .field textarea { resize: vertical; min-height: 80px; }
+    .field .hint { font-size: 0.75rem; color: var(--muted); margin-top: 5px; }
+
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media(max-width:600px) { .field-row { grid-template-columns: 1fr; } }
+
+    /* Status badge */
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+    .status-dot.green { background: var(--success); box-shadow: 0 0 6px var(--success); }
+    .status-dot.red { background: var(--danger); }
+    .status-dot.yellow { background: var(--warning); }
+
+    .config-status {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.8rem; color: var(--muted);
+      background: var(--surface2); padding: 10px 14px;
+      border-radius: 8px; margin-bottom: 20px;
+      border: 1px solid var(--border);
+    }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; font-family: inherit; cursor: pointer; border: none; transition: all 0.2s; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: #7b73ff; }
+    .btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .save-row { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+    .save-msg { font-size: 0.82rem; color: var(--success); opacity: 0; transition: opacity 0.3s; }
+    .save-msg.show { opacity: 1; }
+    .save-msg.error { color: var(--danger); }
+
+    /* Image upload */
+    .upload-area {
+      border: 2px dashed var(--border); border-radius: var(--radius);
+      padding: 28px; text-align: center; cursor: pointer;
+      transition: all 0.2s; position: relative;
+    }
+    .upload-area:hover, .upload-area.drag { border-color: var(--primary); background: rgba(108,99,255,0.05); }
+    .upload-area input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+    .upload-icon { font-size: 2rem; margin-bottom: 8px; }
+    .upload-label { font-size: 0.88rem; color: var(--muted); }
+    .upload-label strong { color: var(--primary); }
+    .upload-preview { width: 100%; max-height: 180px; object-fit: cover; border-radius: 8px; margin-top: 12px; display: none; }
+
+    /* Stat inputs */
+    .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    @media(max-width:500px) { .stat-grid { grid-template-columns: 1fr; } }
+    .stat-card { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+    .stat-card label { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 8px; }
+    .stat-card input { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; color: var(--text); font-size: 1.1rem; font-weight: 700; font-family: inherit; outline: none; transition: border-color 0.2s; }
+    .stat-card input:focus { border-color: var(--primary); }
+
+    /* ── PROYECTOS ── */
+    .project-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .project-row { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: border-color 0.15s; }
+    .project-row:hover { border-color: rgba(108,99,255,.4); }
+    .project-row.editing { border-color: var(--primary); background: rgba(108,99,255,.06); }
+    .project-row.inactive { opacity: .45; }
+    .project-drag { cursor: grab; color: var(--muted); font-size: 1rem; user-select: none; }
+    .project-info { flex: 1; min-width: 0; }
+    .project-name { font-weight: 700; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .project-meta { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+    .project-actions { display: flex; gap: 6px; flex-shrink: 0; }
+    .btn-icon { background: none; border: 1px solid var(--border); color: var(--muted); width: 30px; height: 30px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+    .btn-icon:hover { border-color: var(--primary); color: var(--primary); }
+    .btn-icon.danger:hover { border-color: var(--danger); color: var(--danger); }
+    .project-editor { background: var(--surface); border: 1px solid var(--primary); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; }
+    .editor-title { font-weight: 800; font-size: 1rem; margin-bottom: 20px; color: var(--primary); }
+    .tag-input-wrap { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding: 8px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; min-height: 42px; cursor: text; transition: border-color 0.2s; }
+    .tag-input-wrap:focus-within { border-color: var(--primary); }
+    .tag-chip { display: inline-flex; align-items: center; gap: 5px; background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 2px 8px 2px 10px; font-size: 0.78rem; }
+    .tag-chip.purple { border-color: rgba(108,99,255,.5); color: #8b84ff; }
+    .tag-chip.green { border-color: rgba(0,229,160,.5); color: #00e5a0; }
+    .tag-chip.orange { border-color: rgba(255,159,67,.5); color: #ff9f43; }
+    .tag-chip button { background: none; border: none; color: inherit; cursor: pointer; font-size: 0.85rem; opacity: .6; padding: 0 0 0 2px; line-height: 1; }
+    .tag-chip button:hover { opacity: 1; }
+    .tag-add-input { background: none; border: none; outline: none; color: var(--text); font-size: 0.82rem; font-family: inherit; min-width: 80px; flex: 1; }
+    .color-pills { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+    .color-pill { padding: 3px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; cursor: pointer; border: 1px solid transparent; transition: all 0.15s; }
+    .color-pill.sel { border-color: currentColor !important; }
+    .color-pill.default { color: var(--muted); background: var(--surface2); }
+    .color-pill.purple { color: #8b84ff; background: rgba(108,99,255,.12); }
+    .color-pill.green { color: #00e5a0; background: rgba(0,229,160,.1); }
+    .color-pill.orange { color: #ff9f43; background: rgba(255,159,67,.1); }
+    .empty-projects { text-align: center; padding: 40px; color: var(--muted); font-size: 0.88rem; border: 2px dashed var(--border); border-radius: var(--radius); }
+
+    /* Setup guide */
+    .setup-steps { counter-reset: steps; }
+    .setup-step { display: flex; gap: 14px; margin-bottom: 20px; }
+    .setup-num { width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: #fff; font-size: 0.8rem; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .setup-content strong { display: block; font-size: 0.9rem; margin-bottom: 4px; }
+    .setup-content p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+    .code-inline { background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 2px 7px; font-family: monospace; font-size: 0.8rem; color: var(--secondary); }
+    .copy-btn { background: none; border: 1px solid var(--border); color: var(--muted); padding: 3px 10px; border-radius: 5px; font-size: 0.75rem; cursor: pointer; font-family: inherit; margin-left: 6px; transition: all 0.15s; }
+    .copy-btn:hover { border-color: var(--secondary); color: var(--secondary); }
+    .sql-block { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 14px; font-family: monospace; font-size: 0.78rem; color: var(--secondary); overflow-x: auto; white-space: pre; margin-top: 8px; line-height: 1.6; }
+
+    /* Toast */
+    #toast {
+      position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 20px; font-size: 0.88rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      transform: translateY(80px); opacity: 0;
+      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      display: flex; align-items: center; gap: 10px; max-width: 320px;
+    }
+    #toast.show { transform: translateY(0); opacity: 1; }
+    #toast.success { border-color: var(--success); }
+    #toast.error { border-color: var(--danger); }
+
+    /* â”€â”€â”€ FOCUS VISIBLE (Accesibilidad) â”€â”€â”€ */
+    :focus-visible {
+      outline: 2px solid rgba(108, 99, 255, 0.8);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid rgba(108, 99, 255, 0.8);
+      outline-offset: 3px;
+    }  </style>
+</head>
+<body>
+
+<!-- ── LOGIN ───────────────────────────────────────────────────── -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo"><span>NDR</span> Marketing</div>
+    <div class="login-sub">Panel de Administración</div>
+    <input type="password" id="pwd-input" placeholder="Contraseña" autocomplete="current-password">
+    <div class="login-error" id="login-error"></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="doLogin()">Entrar</button>
+  </div>
+</div>
+
+<!-- ── ADMIN ───────────────────────────────────────────────────── -->
+<div id="admin-screen">
+  <header class="admin-header">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="admin-logo"><span>NDR</span> Marketing</span>
+      <span class="admin-badge">Admin</span>
+    </div>
+    <button class="admin-logout" onclick="doLogout()">Cerrar sesión</button>
+  </header>
+
+  <div class="admin-body">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="sidebar-item active" onclick="showSection('tracking')">
+        <span class="sidebar-icon">🎯</span> Tracking
+      </div>
+      <div class="sidebar-item" onclick="showSection('contacto')">
+        <span class="sidebar-icon">💬</span> Contacto
+      </div>
+      <div class="sidebar-item" onclick="showSection('imagenes')">
+        <span class="sidebar-icon">🖼</span> Imágenes
+      </div>
+      <div class="sidebar-item" onclick="showSection('stats')">
+        <span class="sidebar-icon">📊</span> Stats
+      </div>
+      <div class="sidebar-item" onclick="showSection('proyectos')">
+        <span class="sidebar-icon">🗂</span> Proyectos
+      </div>
+      <div class="sidebar-item" onclick="showSection('setup')">
+        <span class="sidebar-icon">⚙️</span> Configurar Supabase
+      </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="admin-main">
+
+      <!-- Estado conexión -->
+      <div class="config-status" id="connection-status">
+        <span class="status-dot yellow" id="status-dot"></span>
+        <span id="status-text">Verificando conexión con Supabase…</span>
+      </div>
+
+      <!-- ── TRACKING ── -->
+      <section class="section active" id="section-tracking">
+        <div class="section-title">🎯 Tracking</div>
+        <div class="section-desc">Configura Meta Pixel y Google Analytics 4. Los IDs se inyectan automáticamente en todas las páginas.</div>
+
+        <div class="card">
+          <div class="card-title">Meta Pixel</div>
+          <div class="field">
+            <label>Pixel ID</label>
+            <input type="text" id="f-pixel_id" placeholder="ej: 1234567890123456">
+            <div class="hint">Encuéntralo en Meta Business Suite → Administrador de eventos → tu Pixel</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Google Analytics 4</div>
+          <div class="field">
+            <label>Measurement ID</label>
+            <input type="text" id="f-ga4_id" placeholder="ej: G-XXXXXXXXXX">
+            <div class="hint">En GA4 → Admin → Flujos de datos → Web → verás el Measurement ID</div>
+          </div>
+        </div>
+
+        <div class="save-row">
+          <button class="btn btn-primary" onclick="saveSection(['pixel_id','ga4_id'])">Guardar tracking</button>
+          <span class="save-msg" id="msg-tracking"></span>
+        </div>
+      </section>
+
+      <!-- ── CONTACTO ── -->
+      <section class="section" id="section-contacto">
+        <div class="section-title">💬 Contacto</div>
+        <div class="section-desc">Número de WhatsApp, mensaje precargado y link de Calendly usados en toda la web.</div>
+
+        <div class="card">
+          <div class="field-row">
+            <div class="field">
+              <label>Número WhatsApp</label>
+              <input type="text" id="f-whatsapp_number" placeholder="56926879731">
+              <div class="hint">Sin + ni espacios. Incluye código de país (56 para Chile)</div>
+            </div>
+            <div class="field">
+              <label>Link Calendly</label>
+              <input type="text" id="f-calendly_url" placeholder="https://calendly.com/...">
+            </div>
+          </div>
+          <div class="field">
+            <label>Mensaje precargado</label>
+            <textarea id="f-whatsapp_message" rows="3" placeholder="Hola Nicolás, vengo de tu web..."></textarea>
+            <div class="hint">Este texto aparece pre-escrito cuando alguien hace click en WhatsApp</div>
+          </div>
+        </div>
+
+        <div class="save-row">
+          <button class="btn btn-primary" onclick="saveSection(['whatsapp_number','whatsapp_message','calendly_url'])">Guardar contacto</button>
+          <span class="save-msg" id="msg-contacto"></span>
+        </div>
+      </section>
+
+      <!-- ── IMÁGENES ── -->
+      <section class="section" id="section-imagenes">
+        <div class="section-title">🖼 Imágenes</div>
+        <div class="section-desc">Sube imágenes que se aplican dinámicamente en la web. Requiere Supabase Storage bucket "assets" configurado como público.</div>
+
+        <div class="card">
+          <div class="card-title">Foto de perfil (Quiénes Somos)</div>
+          <div class="upload-area" id="upload-profile">
+            <input type="file" accept="image/*" onchange="handleUpload(this,'profile_photo','upload-profile')">
+            <div class="upload-icon">👤</div>
+            <div class="upload-label">Arrastra o <strong>haz click para subir</strong></div>
+            <div class="upload-label" style="margin-top:4px;font-size:0.75rem;">JPG o PNG · Recomendado: 400×400px</div>
+            <img class="upload-preview" id="preview-profile" alt="Preview">
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">OG Image – Paid Media</div>
+          <div class="upload-area" id="upload-og-paid">
+            <input type="file" accept="image/*" onchange="handleUpload(this,'og_image_paid_media','upload-og-paid')">
+            <div class="upload-icon">🖼</div>
+            <div class="upload-label">Arrastra o <strong>haz click para subir</strong></div>
+            <div class="upload-label" style="margin-top:4px;font-size:0.75rem;">JPG · Recomendado: 1200×630px</div>
+            <img class="upload-preview" id="preview-og-paid" alt="Preview">
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">OG Image – Diseño Web</div>
+          <div class="upload-area" id="upload-og-diseno">
+            <input type="file" accept="image/*" onchange="handleUpload(this,'og_image_diseno_web','upload-og-diseno')">
+            <div class="upload-icon">🖼</div>
+            <div class="upload-label">Arrastra o <strong>haz click para subir</strong></div>
+            <div class="upload-label" style="margin-top:4px;font-size:0.75rem;">JPG · Recomendado: 1200×630px</div>
+            <img class="upload-preview" id="preview-og-diseno" alt="Preview">
+          </div>
+        </div>
+      </section>
+
+      <!-- ── STATS ── -->
+      <section class="section" id="section-stats">
+        <div class="section-title">📊 Stats</div>
+        <div class="section-desc">Los números que aparecen en los heroes de la web. Cámbialos cuando alcances nuevos hitos.</div>
+
+        <div class="card">
+          <div class="stat-grid">
+            <div class="stat-card">
+              <label>Revenue generado</label>
+              <input type="text" id="f-stat_revenue" placeholder="$191M+">
+            </div>
+            <div class="stat-card">
+              <label>ROAS máximo</label>
+              <input type="text" id="f-stat_roas" placeholder="28x">
+            </div>
+            <div class="stat-card">
+              <label>Años de experiencia</label>
+              <input type="text" id="f-stat_years" placeholder="5+">
+            </div>
+            <div class="stat-card">
+              <label>Clientes activos</label>
+              <input type="text" id="f-stat_clients" placeholder="20+">
+            </div>
+          </div>
+        </div>
+
+        <div class="save-row">
+          <button class="btn btn-primary" onclick="saveSection(['stat_revenue','stat_roas','stat_years','stat_clients'])">Guardar stats</button>
+          <span class="save-msg" id="msg-stats"></span>
+        </div>
+      </section>
+
+      <!-- ── PROYECTOS ── -->
+      <section class="section" id="section-proyectos">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:6px;flex-wrap:wrap;">
+          <div>
+            <div class="section-title">🗂 Proyectos del Portafolio</div>
+            <div class="section-desc">Los proyectos se muestran en portafolio.html y diseño-web.html. Requiere Supabase conectado.</div>
+          </div>
+          <button class="btn btn-primary" onclick="openProjectEditor(null)">+ Nuevo proyecto</button>
+        </div>
+
+        <!-- Editor inline (oculto por defecto) -->
+        <div class="project-editor" id="project-editor" style="display:none;">
+          <div class="editor-title" id="editor-title">Nuevo proyecto</div>
+          <input type="hidden" id="edit-project-id">
+
+          <div class="field-row">
+            <div class="field">
+              <label>Nombre del proyecto *</label>
+              <input type="text" id="ep-name" placeholder="ej: Trenda.cl">
+            </div>
+            <div class="field">
+              <label>Dominio (barra URL)</label>
+              <input type="text" id="ep-domain" placeholder="ej: trenda.cl">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>URL del sitio *</label>
+              <input type="text" id="ep-live_url" placeholder="https://www.trenda.cl">
+            </div>
+            <div class="field">
+              <label>Plataforma</label>
+              <input type="text" id="ep-platform" placeholder="Shopify, Tiendanube, WordPress…">
+            </div>
+          </div>
+          <div class="field">
+            <label>Descripción larga (portafolio.html)</label>
+            <textarea id="ep-description" rows="3" placeholder="Tienda de moda en Shopify con tema personalizado…"></textarea>
+          </div>
+          <div class="field">
+            <label>Descripción corta (diseño-web.html)</label>
+            <textarea id="ep-description_short" rows="2" placeholder="Versión corta de la descripción…"></textarea>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Logro / Highlight (opcional)</label>
+              <input type="text" id="ep-highlight" placeholder="ej: $191M+ CLP en ventas atribuidas">
+              <div class="hint">Aparece con ícono ★ verde bajo la descripción</div>
+            </div>
+            <div class="field">
+              <label>Badge especial (opcional)</label>
+              <input type="text" id="ep-badge" placeholder="ej: Tienda oficial NBA">
+              <div class="hint">Badge rojo pequeño sobre las tags</div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Tags <span style="font-weight:400;color:var(--muted)">(escribe y presiona Enter · elige color opcional)</span></label>
+            <div class="tag-input-wrap" id="tags-wrap" onclick="document.getElementById('tag-new-input').focus()">
+              <input type="text" class="tag-add-input" id="tag-new-input" placeholder="Agregar tag…">
+            </div>
+            <div class="color-pills">
+              <span style="font-size:0.72rem;color:var(--muted);margin-right:2px;">Color siguiente:</span>
+              <span class="color-pill default sel" id="cp-default" onclick="setTagColor('')">Sin color</span>
+              <span class="color-pill purple" id="cp-purple" onclick="setTagColor('purple')">Morado</span>
+              <span class="color-pill green" id="cp-green" onclick="setTagColor('green')">Verde</span>
+              <span class="color-pill orange" id="cp-orange" onclick="setTagColor('orange')">Naranja</span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Gradiente de fondo</label>
+              <input type="text" id="ep-gradient" placeholder="linear-gradient(135deg,rgba(108,99,255,.14),rgba(60,50,180,.08))">
+              <div class="hint">CSS gradient para el placeholder del screenshot</div>
+            </div>
+            <div class="field">
+              <label>Orden</label>
+              <input type="number" id="ep-sort_order" placeholder="1" min="0" max="99">
+            </div>
+          </div>
+          <div class="field" style="display:flex;align-items:center;gap:10px;">
+            <input type="checkbox" id="ep-active" checked style="width:16px;height:16px;accent-color:var(--primary);">
+            <label for="ep-active" style="text-transform:none;letter-spacing:0;font-size:0.88rem;cursor:pointer;">Proyecto activo (visible en la web)</label>
+          </div>
+
+          <div class="save-row" style="margin-top:20px;">
+            <button class="btn btn-primary" onclick="saveProject()">💾 Guardar proyecto</button>
+            <button class="btn btn-secondary" onclick="closeProjectEditor()">Cancelar</button>
+            <span class="save-msg" id="msg-project"></span>
+          </div>
+        </div>
+
+        <!-- Lista de proyectos -->
+        <div class="project-list" id="project-list">
+          <div class="empty-projects" id="projects-empty">
+            Conecta Supabase y crea la tabla <code style="font-size:0.8rem;background:var(--surface2);padding:2px 6px;border-radius:4px;">portfolio_projects</code> para gestionar proyectos desde aquí.
+          </div>
+        </div>
+
+        <!-- SQL setup -->
+        <div class="card" style="border-style:dashed;border-color:rgba(108,99,255,.3);">
+          <div class="card-title">🔧 SQL — Tabla portfolio_projects</div>
+          <p style="font-size:0.82rem;color:var(--muted);margin-bottom:10px;">Ejecuta esto en Supabase → SQL Editor para habilitar la gestión de proyectos:</p>
+          <div class="sql-block" id="projects-sql">CREATE TABLE portfolio_projects (
+  id          bigserial PRIMARY KEY,
+  sort_order  integer DEFAULT 0,
+  active      boolean DEFAULT true,
+  name        text NOT NULL,
+  domain      text,
+  description text,
+  description_short text,
+  platform    text,
+  live_url    text,
+  tags        jsonb DEFAULT '[]',
+  highlight   text DEFAULT '',
+  badge       text DEFAULT '',
+  gradient    text DEFAULT 'linear-gradient(135deg,rgba(108,99,255,.14),rgba(60,50,180,.08))',
+  created_at  timestamptz DEFAULT now()
+);
+
+ALTER TABLE portfolio_projects ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "public read"  ON portfolio_projects FOR SELECT USING (true);
+CREATE POLICY "authed write" ON portfolio_projects FOR ALL    USING (auth.role() = 'authenticated');
+
+-- Proyectos de ejemplo (seed data)
+INSERT INTO portfolio_projects (sort_order,name,domain,description,description_short,platform,live_url,tags,highlight,badge,gradient) VALUES
+(1,'Trenda.cl','trenda.cl','Tienda de moda en Shopify con tema personalizado, pasarela de pago integrada y catálogo optimizado para mobile.','Tienda de moda en Shopify con tema custom y pasarela integrada.','Shopify','https://www.trenda.cl','[{"text":"Shopify","color":"purple"},{"text":"Tema custom","color":""},{"text":"Mobile first","color":""}]','','','linear-gradient(135deg,rgba(108,99,255,.14),rgba(60,50,180,.08))'),
+(2,'Karla Mallol Boutique','karlamallolboutique.cl','Boutique online con identidad visual de lujo, catálogo de productos y checkout optimizado.','Boutique online con identidad visual de lujo y checkout optimizado.','Tiendanube','https://www.karlamallolboutique.cl','[{"text":"Tiendanube","color":"green"},{"text":"Diseño premium","color":"orange"}]','','','linear-gradient(135deg,rgba(255,159,67,.12),rgba(180,100,30,.07))'),
+(3,'Fenia Oficial','feniaoficial.com','Tienda de moda en Tiendanube con diseño a medida, Webpay y Mercado Pago.','Tienda de moda en Tiendanube con diseño a medida y pagos integrados.','Tiendanube','https://www.feniaoficial.com','[{"text":"Tiendanube","color":"green"},{"text":"Webpay","color":"green"}]','','','linear-gradient(135deg,rgba(0,229,160,.12),rgba(0,160,100,.07))'),
+(4,'Fitness Saludable','fitnesssaludable.cl','Sitio de salud y fitness en WordPress con landing de captación de leads y SEO on-page.','Sitio en WordPress con landing de leads y SEO on-page.','WordPress','https://www.fitnesssaludable.cl','[{"text":"WordPress","color":""},{"text":"SEO","color":"green"},{"text":"Lead gen","color":""}]','','','linear-gradient(135deg,rgba(0,229,160,.16),rgba(0,180,100,.08))'),
+(5,'Vaypol','vaypol.com','Gran ecommerce deportivo en Shopify con tracking completo para Meta Ads y Google Ads.','Ecommerce deportivo en Shopify con tracking completo para ads.','Shopify','https://www.vaypol.com','[{"text":"Shopify","color":"purple"},{"text":"Ecommerce","color":""},{"text":"Tracking","color":""}]','$191M+ CLP en ventas atribuidas','','linear-gradient(135deg,rgba(150,191,72,.18),rgba(94,142,62,.1))'),
+(6,'NBA Store Chile','tiendanba.cl','Desarrollo de código Liquid personalizado para la tienda oficial NBA en Chile.','Desarrollo Liquid personalizado para la tienda oficial NBA en Chile.','Shopify · Liquid','https://www.tiendanba.cl','[{"text":"Shopify","color":"purple"},{"text":"Liquid","color":""},{"text":"CRO","color":""}]','','Tienda oficial NBA','linear-gradient(135deg,rgba(200,16,46,.18),rgba(23,64,139,.14))');</div>
+          <button class="copy-btn" style="margin-top:10px;" onclick="copyProjectsSQL()">Copiar SQL</button>
+        </div>
+      </section>
+
+      <!-- ── SETUP ── -->
+      <section class="section" id="section-setup">
+        <div class="section-title">⚙️ Configurar Supabase</div>
+        <div class="section-desc">Sigue estos pasos una sola vez para activar el panel. Después todo funciona solo.</div>
+
+        <div class="card">
+          <div class="setup-steps">
+
+            <div class="setup-step">
+              <div class="setup-num">1</div>
+              <div class="setup-content">
+                <strong>Crea una cuenta gratis en supabase.com</strong>
+                <p>Ve a <span class="code-inline">supabase.com</span> → New project → dale un nombre (ej: "ndr-marketing") → elige región São Paulo (más cercana a Chile).</p>
+              </div>
+            </div>
+
+            <div class="setup-step">
+              <div class="setup-num">2</div>
+              <div class="setup-content">
+                <strong>Crea la tabla site_config</strong>
+                <p>En el dashboard de Supabase → SQL Editor → pega y ejecuta este SQL:</p>
+                <div class="sql-block">CREATE TABLE site_config (
+  key   TEXT PRIMARY KEY,
+  value TEXT
+);
+
+-- Valores iniciales
+INSERT INTO site_config (key, value) VALUES
+  ('pixel_id',          ''),
+  ('ga4_id',            ''),
+  ('whatsapp_number',   '56926879731'),
+  ('whatsapp_message',  'Hola Nicolás, vengo de tu web y me gustaría saber más.'),
+  ('calendly_url',      'https://calendly.com/ndrmarketing'),
+  ('stat_revenue',      '$191M+'),
+  ('stat_roas',         '28x'),
+  ('stat_years',        '5+'),
+  ('stat_clients',      '20+'),
+  ('profile_photo',     ''),
+  ('og_image_paid_media',  ''),
+  ('og_image_diseno_web',  ''),
+  ('og_image_quienes_somos', ''),
+  ('og_image_portafolio',  ''),
+  ('og_image_precios_web', '');
+
+-- Permitir lectura pública (para config-loader.js)
+ALTER TABLE site_config ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "public read" ON site_config FOR SELECT USING (true);
+CREATE POLICY "authed write" ON site_config FOR ALL USING (auth.role() = 'authenticated');</div>
+                <button class="copy-btn" onclick="copySQL()">Copiar SQL</button>
+              </div>
+            </div>
+
+            <div class="setup-step">
+              <div class="setup-num">3</div>
+              <div class="setup-content">
+                <strong>Crea el Storage bucket "assets"</strong>
+                <p>En Supabase → Storage → New bucket → nombre: <span class="code-inline">assets</span> → marca "Public bucket" → Create.</p>
+              </div>
+            </div>
+
+            <div class="setup-step">
+              <div class="setup-num">4</div>
+              <div class="setup-content">
+                <strong>Copia tus credenciales</strong>
+                <p>En Supabase → Settings → API → copia <span class="code-inline">Project URL</span> y <span class="code-inline">anon public</span> key.</p>
+              </div>
+            </div>
+
+            <div class="setup-step">
+              <div class="setup-num">5</div>
+              <div class="setup-content">
+                <strong>Pega las credenciales en config-loader.js</strong>
+                <p>Abre el archivo <span class="code-inline">config-loader.js</span> y reemplaza las dos constantes al inicio:</p>
+                <div class="sql-block">const SUPABASE_URL = 'https://xxxx.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGci...';</div>
+              </div>
+            </div>
+
+            <div class="setup-step">
+              <div class="setup-num">6</div>
+              <div class="setup-content">
+                <strong>También pégalas aquí para usar el panel</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-row" style="margin-top:8px;">
+            <div class="field">
+              <label>Supabase Project URL</label>
+              <input type="text" id="sb-url" placeholder="https://xxxx.supabase.co">
+            </div>
+            <div class="field">
+              <label>Anon Key</label>
+              <input type="text" id="sb-key" placeholder="eyJhbGci...">
+            </div>
+          </div>
+          <div class="field">
+            <label>Contraseña del panel (para cambiarla)</label>
+            <input type="text" id="sb-newpwd" placeholder="Nueva contraseña (opcional)">
+          </div>
+          <div class="save-row">
+            <button class="btn btn-primary" onclick="saveSupabaseConfig()">Conectar</button>
+            <span class="save-msg" id="msg-setup"></span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast">
+  <span id="toast-icon">✓</span>
+  <span id="toast-text">Guardado correctamente</span>
+</div>
+
+<script>
+// ─── CONFIG STORAGE ────────────────────────────────────────────
+const STORAGE_KEY = 'ndr_admin_config';
+let SB = { url: '', key: '' };
+
+function loadLocalConfig() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    if (saved.url) SB.url = saved.url;
+    if (saved.key) SB.key = saved.key;
+  } catch {}
+}
+
+function saveLocalConfig() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(SB));
+}
+
+// ─── AUTH ──────────────────────────────────────────────────────
+// Simple SHA-256 hash de la contraseña
+// Default password: "ndr2026" (hash abajo) — puede cambiarse en setup
+const DEFAULT_HASH = '10809a2b99e7ac20cbd9591d7f934a5bdfa2c456850535c5fad30c75d1cfdfac';
+
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+async function doLogin() {
+  const pwd = document.getElementById('pwd-input').value;
+  if (!pwd) return;
+  const hash = await sha256(pwd);
+  const stored = localStorage.getItem('ndr_pwd_hash') || DEFAULT_HASH;
+  if (hash === stored) {
+    sessionStorage.setItem('ndr_admin_auth', '1');
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-screen').style.display = 'block';
+    initAdmin();
+  } else {
+    document.getElementById('login-error').textContent = 'Contraseña incorrecta';
+    document.getElementById('pwd-input').style.borderColor = '#ff4444';
+  }
+}
+
+document.getElementById('pwd-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doLogin();
+  document.getElementById('login-error').textContent = '';
+  document.getElementById('pwd-input').style.borderColor = '';
+});
+
+function doLogout() {
+  sessionStorage.removeItem('ndr_admin_auth');
+  location.reload();
+}
+
+// Check if already authed
+if (sessionStorage.getItem('ndr_admin_auth') === '1') {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('admin-screen').style.display = 'block';
+  document.addEventListener('DOMContentLoaded', initAdmin);
+}
+
+// ─── INIT ──────────────────────────────────────────────────────
+async function initAdmin() {
+  loadLocalConfig();
+  if (SB.url) {
+    document.getElementById('sb-url').value = SB.url;
+    document.getElementById('sb-key').value = SB.key;
+    await testConnection();
+    await loadAllValues();
+    await loadProjectsList();
+  } else {
+    setStatus('yellow', 'Supabase no configurado — ve a ⚙️ Setup para conectar');
+  }
+}
+
+async function testConnection() {
+  try {
+    const res = await sbFetch('/rest/v1/site_config?select=key&limit=1');
+    if (res.ok) {
+      setStatus('green', 'Conectado a Supabase ✓');
+      return true;
+    } else {
+      setStatus('red', 'Error de conexión — verifica tus credenciales en ⚙️ Setup');
+      return false;
+    }
+  } catch {
+    setStatus('red', 'No se pudo conectar a Supabase');
+    return false;
+  }
+}
+
+function setStatus(color, text) {
+  document.getElementById('status-dot').className = `status-dot ${color}`;
+  document.getElementById('status-text').textContent = text;
+}
+
+// ─── SUPABASE FETCH ─────────────────────────────────────────────
+function sbFetch(path, options = {}) {
+  return fetch(`${SB.url}${path}`, {
+    ...options,
+    headers: {
+      'apikey': SB.key,
+      'Authorization': `Bearer ${SB.key}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation',
+      ...(options.headers || {}),
+    },
+  });
+}
+
+// ─── LOAD VALUES ───────────────────────────────────────────────
+async function loadAllValues() {
+  if (!SB.url) return;
+  try {
+    const res = await sbFetch('/rest/v1/site_config?select=key,value');
+    if (!res.ok) return;
+    const rows = await res.json();
+    rows.forEach(({ key, value }) => {
+      const el = document.getElementById(`f-${key}`);
+      if (el && value) el.value = value;
+    });
+  } catch {}
+}
+
+// ─── SAVE ──────────────────────────────────────────────────────
+async function saveSection(keys) {
+  if (!SB.url) { showToast('Configura Supabase primero en ⚙️ Setup', 'error'); return; }
+
+  const updates = keys.map(key => ({
+    key,
+    value: (document.getElementById(`f-${key}`)?.value || '').trim()
+  }));
+
+  let allOk = true;
+  for (const { key, value } of updates) {
+    try {
+      const res = await sbFetch(`/rest/v1/site_config?key=eq.${key}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ value }),
+      });
+      if (!res.ok) allOk = false;
+    } catch { allOk = false; }
+  }
+
+  if (allOk) {
+    showToast('Cambios guardados correctamente ✓', 'success');
+  } else {
+    showToast('Error al guardar — revisa la consola', 'error');
+  }
+}
+
+// ─── SUPABASE SETUP ─────────────────────────────────────────────
+async function saveSupabaseConfig() {
+  const url = document.getElementById('sb-url').value.trim().replace(/\/$/, '');
+  const key = document.getElementById('sb-key').value.trim();
+  const newPwd = document.getElementById('sb-newpwd').value.trim();
+
+  if (!url || !key) { showToast('Ingresa URL y Anon Key', 'error'); return; }
+
+  SB = { url, key };
+  saveLocalConfig();
+
+  // Cambiar contraseña si se ingresó
+  if (newPwd) {
+    const hash = await sha256(newPwd);
+    localStorage.setItem('ndr_pwd_hash', hash);
+  }
+
+  const ok = await testConnection();
+  if (ok) {
+    showToast('Supabase conectado correctamente ✓', 'success');
+    await loadAllValues();
+    await loadProjectsList();
+  }
+}
+
+// ─── IMAGE UPLOAD ───────────────────────────────────────────────
+async function handleUpload(input, configKey, areaId) {
+  const file = input.files[0];
+  if (!file) return;
+
+  if (!SB.url) { showToast('Configura Supabase primero', 'error'); return; }
+
+  const ext = file.name.split('.').pop();
+  const filename = `${configKey}-${Date.now()}.${ext}`;
+
+  // Show local preview immediately
+  const previewId = 'preview-' + areaId.replace('upload-', '');
+  const preview = document.getElementById(previewId);
+  if (preview) {
+    preview.src = URL.createObjectURL(file);
+    preview.style.display = 'block';
+  }
+
+  showToast('Subiendo imagen…', 'success');
+
+  try {
+    // Upload to Supabase Storage
+    const uploadRes = await fetch(`${SB.url}/storage/v1/object/assets/${filename}`, {
+      method: 'POST',
+      headers: {
+        'apikey': SB.key,
+        'Authorization': `Bearer ${SB.key}`,
+        'Content-Type': file.type,
+        'x-upsert': 'true',
+      },
+      body: file,
+    });
+
+    if (!uploadRes.ok) throw new Error('Upload failed');
+
+    const publicUrl = `${SB.url}/storage/v1/object/public/assets/${filename}`;
+
+    // Save URL to site_config
+    await sbFetch(`/rest/v1/site_config?key=eq.${configKey}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ value: publicUrl }),
+    });
+
+    showToast('Imagen subida y guardada ✓', 'success');
+  } catch (e) {
+    showToast('Error al subir imagen', 'error');
+  }
+}
+
+// ─── NAV ───────────────────────────────────────────────────────
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
+  document.getElementById(`section-${id}`).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// ─── TOAST ─────────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg, type = 'success') {
+  const toast = document.getElementById('toast');
+  const icon = document.getElementById('toast-icon');
+  const text = document.getElementById('toast-text');
+  toast.className = `show ${type}`;
+  icon.textContent = type === 'success' ? '✓' : '✗';
+  text.textContent = msg;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { toast.className = ''; }, 3500);
+}
+
+// ─── COPY SQL ──────────────────────────────────────────────────
+function copySQL() {
+  const sql = document.querySelector('#section-setup .sql-block').textContent;
+  navigator.clipboard.writeText(sql).then(() => showToast('SQL copiado al portapapeles ✓'));
+}
+function copyProjectsSQL() {
+  const sql = document.getElementById('projects-sql').textContent;
+  navigator.clipboard.writeText(sql).then(() => showToast('SQL copiado al portapapeles ✓'));
+}
+
+// ─── PROYECTOS CRUD ────────────────────────────────────────────
+let allProjects = [];
+let currentTagColor = '';
+
+async function loadProjectsList() {
+  if (!SB.url) return;
+  try {
+    const res = await sbFetch('/rest/v1/portfolio_projects?select=*&order=sort_order.asc');
+    if (!res.ok) return;
+    allProjects = await res.json();
+    renderProjectList();
+  } catch {}
+}
+
+function renderProjectList() {
+  const list = document.getElementById('project-list');
+  const empty = document.getElementById('projects-empty');
+  if (!allProjects || allProjects.length === 0) {
+    empty.style.display = 'block';
+    list.innerHTML = '';
+    list.appendChild(empty);
+    return;
+  }
+  empty.style.display = 'none';
+  list.innerHTML = allProjects.map(p => `
+    <div class="project-row${p.active === false ? ' inactive' : ''}" id="prow-${p.id}">
+      <span class="project-drag" title="Orden: ${p.sort_order || 0}">⠿</span>
+      <div class="project-info">
+        <div class="project-name">${escHtml(p.name)}</div>
+        <div class="project-meta">${escHtml(p.platform || '')} · ${escHtml(p.domain || '')} ${p.active === false ? '· <span style="color:var(--warning)">Inactivo</span>' : ''}</div>
+      </div>
+      <div class="project-actions">
+        <button class="btn-icon" onclick="moveProject(${p.id},-1)" title="Subir">↑</button>
+        <button class="btn-icon" onclick="moveProject(${p.id},1)" title="Bajar">↓</button>
+        <button class="btn-icon" onclick="openProjectEditor(${p.id})" title="Editar">✏️</button>
+        <button class="btn-icon danger" onclick="deleteProject(${p.id},'${escHtml(p.name)}')" title="Eliminar">🗑</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function escHtml(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function openProjectEditor(id) {
+  const editor = document.getElementById('project-editor');
+  editor.style.display = 'block';
+  editor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  // Clear tags
+  renderTagChips([]);
+
+  if (!id) {
+    document.getElementById('editor-title').textContent = '+ Nuevo proyecto';
+    document.getElementById('edit-project-id').value = '';
+    document.getElementById('ep-name').value = '';
+    document.getElementById('ep-domain').value = '';
+    document.getElementById('ep-live_url').value = '';
+    document.getElementById('ep-platform').value = '';
+    document.getElementById('ep-description').value = '';
+    document.getElementById('ep-description_short').value = '';
+    document.getElementById('ep-highlight').value = '';
+    document.getElementById('ep-badge').value = '';
+    document.getElementById('ep-gradient').value = 'linear-gradient(135deg,rgba(108,99,255,.14),rgba(60,50,180,.08))';
+    document.getElementById('ep-sort_order').value = (allProjects.length + 1);
+    document.getElementById('ep-active').checked = true;
+  } else {
+    const p = allProjects.find(x => x.id === id);
+    if (!p) return;
+    document.getElementById('editor-title').textContent = 'Editando: ' + p.name;
+    document.getElementById('edit-project-id').value = id;
+    document.getElementById('ep-name').value = p.name || '';
+    document.getElementById('ep-domain').value = p.domain || '';
+    document.getElementById('ep-live_url').value = p.live_url || '';
+    document.getElementById('ep-platform').value = p.platform || '';
+    document.getElementById('ep-description').value = p.description || '';
+    document.getElementById('ep-description_short').value = p.description_short || '';
+    document.getElementById('ep-highlight').value = p.highlight || '';
+    document.getElementById('ep-badge').value = p.badge || '';
+    document.getElementById('ep-gradient').value = p.gradient || '';
+    document.getElementById('ep-sort_order').value = p.sort_order || 1;
+    document.getElementById('ep-active').checked = p.active !== false;
+    const tags = Array.isArray(p.tags) ? p.tags : (()=>{ try{return JSON.parse(p.tags||'[]');}catch{return [];} })();
+    renderTagChips(tags);
+  }
+  // Mark this row as editing
+  document.querySelectorAll('.project-row').forEach(r => r.classList.remove('editing'));
+  if (id) { const row = document.getElementById('prow-'+id); if(row) row.classList.add('editing'); }
+}
+
+function closeProjectEditor() {
+  document.getElementById('project-editor').style.display = 'none';
+  document.querySelectorAll('.project-row').forEach(r => r.classList.remove('editing'));
+}
+
+async function saveProject() {
+  if (!SB.url) { showToast('Configura Supabase primero', 'error'); return; }
+  const id = document.getElementById('edit-project-id').value;
+  const tags = getTagsFromEditor();
+  const data = {
+    name: document.getElementById('ep-name').value.trim(),
+    domain: document.getElementById('ep-domain').value.trim(),
+    live_url: document.getElementById('ep-live_url').value.trim(),
+    platform: document.getElementById('ep-platform').value.trim(),
+    description: document.getElementById('ep-description').value.trim(),
+    description_short: document.getElementById('ep-description_short').value.trim(),
+    highlight: document.getElementById('ep-highlight').value.trim(),
+    badge: document.getElementById('ep-badge').value.trim(),
+    gradient: document.getElementById('ep-gradient').value.trim(),
+    sort_order: parseInt(document.getElementById('ep-sort_order').value) || 0,
+    active: document.getElementById('ep-active').checked,
+    tags: tags,
+  };
+  if (!data.name) { showToast('El nombre es obligatorio', 'error'); return; }
+
+  try {
+    let res;
+    if (id) {
+      res = await sbFetch(`/rest/v1/portfolio_projects?id=eq.${id}`, { method: 'PATCH', body: JSON.stringify(data) });
+    } else {
+      res = await sbFetch('/rest/v1/portfolio_projects', { method: 'POST', body: JSON.stringify(data) });
+    }
+    if (res.ok) {
+      showToast((id ? 'Proyecto actualizado' : 'Proyecto creado') + ' ✓', 'success');
+      closeProjectEditor();
+      await loadProjectsList();
+    } else {
+      const err = await res.json().catch(() => ({}));
+      showToast('Error: ' + (err.message || 'No se pudo guardar'), 'error');
+    }
+  } catch (e) {
+    showToast('Error de conexión', 'error');
+  }
+}
+
+async function deleteProject(id, name) {
+  if (!confirm(`¿Eliminar "${name}"? Esta acción no se puede deshacer.`)) return;
+  try {
+    const res = await sbFetch(`/rest/v1/portfolio_projects?id=eq.${id}`, { method: 'DELETE' });
+    if (res.ok || res.status === 204) {
+      showToast('Proyecto eliminado', 'success');
+      allProjects = allProjects.filter(p => p.id !== id);
+      renderProjectList();
+    } else {
+      showToast('Error al eliminar', 'error');
+    }
+  } catch { showToast('Error de conexión', 'error'); }
+}
+
+async function moveProject(id, dir) {
+  const idx = allProjects.findIndex(p => p.id === id);
+  if (idx < 0) return;
+  const newIdx = idx + dir;
+  if (newIdx < 0 || newIdx >= allProjects.length) return;
+  // Swap sort_order
+  const a = allProjects[idx], b = allProjects[newIdx];
+  const tempOrder = a.sort_order;
+  a.sort_order = b.sort_order;
+  b.sort_order = tempOrder;
+  // Patch both
+  try {
+    await Promise.all([
+      sbFetch(`/rest/v1/portfolio_projects?id=eq.${a.id}`, { method: 'PATCH', body: JSON.stringify({ sort_order: a.sort_order }) }),
+      sbFetch(`/rest/v1/portfolio_projects?id=eq.${b.id}`, { method: 'PATCH', body: JSON.stringify({ sort_order: b.sort_order }) }),
+    ]);
+    allProjects.sort((x, y) => (x.sort_order || 0) - (y.sort_order || 0));
+    renderProjectList();
+    showToast('Orden actualizado ✓', 'success');
+  } catch { showToast('Error al reordenar', 'error'); }
+}
+
+// ── Tag editor ──────────────────────────────────────────────────
+let editorTags = [];
+
+function renderTagChips(tags) {
+  editorTags = tags.map(t => typeof t === 'object' ? t : { text: t, color: '' });
+  const wrap = document.getElementById('tags-wrap');
+  const input = document.getElementById('tag-new-input');
+  wrap.innerHTML = '';
+  editorTags.forEach((tag, i) => {
+    const chip = document.createElement('span');
+    chip.className = 'tag-chip' + (tag.color ? ' ' + tag.color : '');
+    chip.innerHTML = `${escHtml(tag.text)}<button onclick="removeTag(${i})" title="Eliminar">×</button>`;
+    wrap.appendChild(chip);
+  });
+  wrap.appendChild(input);
+}
+
+function removeTag(i) {
+  editorTags.splice(i, 1);
+  renderTagChips(editorTags);
+}
+
+function getTagsFromEditor() {
+  return editorTags;
+}
+
+function setTagColor(color) {
+  currentTagColor = color;
+  document.querySelectorAll('.color-pill').forEach(p => p.classList.remove('sel'));
+  const map = { '': 'cp-default', 'purple': 'cp-purple', 'green': 'cp-green', 'orange': 'cp-orange' };
+  const el = document.getElementById(map[color] || 'cp-default');
+  if (el) el.classList.add('sel');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('tag-new-input');
+  if (!input) return;
+  input.addEventListener('keydown', (e) => {
+    if ((e.key === 'Enter' || e.key === ',') && input.value.trim()) {
+      e.preventDefault();
+      editorTags.push({ text: input.value.trim(), color: currentTagColor });
+      renderTagChips(editorTags);
+      input.value = '';
+    } else if (e.key === 'Backspace' && input.value === '' && editorTags.length > 0) {
+      editorTags.pop();
+      renderTagChips(editorTags);
+    }
+  });
+});
+</script>
+</body>
+</html>
